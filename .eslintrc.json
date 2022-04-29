@@ -15,6 +15,8 @@
   "plugins": ["react"],
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    // TEMP for learning purposes
+    "react/prefer-stateless-function": [0, { "ignorePureComponents": true }]
   }
 }
