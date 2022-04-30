@@ -1,0 +1,9 @@
+.App {
+  height: inherit;
+  width: inherit;
+  padding: 1rem;
+  border: 1px solid black;
+  display: grid;
+  grid-template-rows: repeat(20, 1fr);
+  grid-template-columns: repeat(20, 1fr);
+}
