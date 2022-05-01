@@ -1,4 +1,54 @@
 .Header {
+  width: 100%;
   grid-area: 1 / 1 / 5 / 21;
+  background-color: var(--light-gray);
+  display: flex;
+  justify-content: space-between;
+}
+.Header__info {
+  padding-left: 4rem;
+}
+
+.Header__name {
+  padding-top: 3rem;
+  max-width: 50rem;
+  text-transform: uppercase;
+  font-size: 4rem;
+}
+.Header__first-name {
+  font-weight: 700;
+  padding-right: 1rem;
+}
+.Header__last-name {
+  font-weight: 400;
+}
+.Header__job-position {
+  padding-top: 1.2rem;
+  font-weight: 600;
+  font-size: 2rem;
+}
+.Header__line {
+  padding-left: 2rem;
+  display: inline-block;
+  position: relative;
+  top: -3px;
+  left: 2rem;
+  width: 50%;
+  min-width: 10rem;
+  max-width: 30rem;
+  height: 1px;
   background-color: var(--dark-gray);
+}
+.Header__biography {
+  padding-top: 1.2rem;
+  font-size: 1.3rem;
+  width: 50rem;
+}
+.Header__portrait {
+  margin: 3rem;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 100%;
+  border: 3px solid var(--dark-gray);
+  overflow: hidden;
 }

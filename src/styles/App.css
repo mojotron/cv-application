@@ -1,9 +1,10 @@
 .App {
   height: inherit;
-  width: inherit;
+  width: 87.4rem; /* A4 */
   padding: 1rem;
   border: 1px solid black;
   display: grid;
-  grid-template-rows: repeat(20, 1fr);
+  grid-template-rows: auto;
   grid-template-columns: repeat(20, 1fr);
+  background-color: var(--light-gray);
 }
