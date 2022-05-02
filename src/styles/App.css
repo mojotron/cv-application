@@ -1,6 +1,6 @@
 .App {
   height: inherit;
-  width: 87.4rem; /* A4 */
+  max-width: 500;
   padding: 1rem;
   border: 1px solid black;
   display: grid;

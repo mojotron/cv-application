@@ -2,3 +2,11 @@
   grid-area: 5 / 1 / 10 / 6;
   background-color: aquamarine;
 }
+.Contact__field {
+  display: flex;
+  padding: 0.5rem 2rem;
+}
+.Contact__field__img {
+  height: 1.4rem;
+  margin-right: 1rem;
+}
