@@ -1,4 +1,5 @@
 .Skills {
   grid-area: 10 / 1 / 21 / 6;
-  background-color: darkgoldenrod;
+  background-color: var(--light-gray);
+  padding: 2rem;
 }

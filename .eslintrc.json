@@ -19,6 +19,7 @@
     // TEMP for learning purposes
     "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
     "react/prop-types": "off",
-    "react/destructuring-assignment": "off"
+    "react/destructuring-assignment": "off",
+    "no-useless-constructor": "off"
   }
 }

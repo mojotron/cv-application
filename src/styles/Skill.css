@@ -1,0 +1,15 @@
+.Skill {
+  /* display: flex;
+  justify-content: space-between; */
+}
+.Skill__progress-bar {
+  border: 1px solid rgb(31, 32, 32);
+  background: white;
+  height: 1rem;
+  width: 10rem;
+  border-radius: 0.1rem;
+}
+.Skill__progress-bar[value]::-moz-progress-bar,
+.Skill__progress-bar[value]::-webkit-progress-bar {
+  background: linear-gradient(90deg, rgb(70, 217, 236), rgb(4, 68, 77));
+}
