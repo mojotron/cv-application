@@ -6,8 +6,10 @@ html {
   font-weight: 400;
 }
 :root {
-  --dark-gray: #312a32;
-  --light-gray: #bbb9bf;
+  --dark-gray: #3a393f;
+  --light-gray: #dadbdf;
+  --font-color: #5f5f61;
+  --blue-gradient: linear-gradient(90deg, rgb(4, 68, 77), rgb(70, 217, 236));
 }
 *,
 *::before,
@@ -21,11 +23,18 @@ body {
   width: 100%;
   background: linear-gradient();
   background-color: var(--dark-gray);
-}
-#root {
-  height: inherit;
-  width: inherit;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+p {
+  color: var(--font-color);
+}
+#root {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: var(--blue-gradient);
 }

@@ -1,10 +1,15 @@
 .App {
   height: inherit;
-  max-width: 500;
+  width: 59.5rem;
+  min-height: 84.2rem;
   padding: 1rem;
-  border: 1px solid black;
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: repeat(20, 1fr);
   background-color: var(--light-gray);
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas:
+    'header header header header'
+    'contacts work-xp work-xp wor-xp'
+    'skills education education education';
 }

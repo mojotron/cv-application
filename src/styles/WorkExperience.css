@@ -1,5 +1,5 @@
 .WorkExperience {
-  grid-area: 5/6/13/ 21;
+  grid-area: work-xp;
   background-color: var(--light-gray);
   border-left: 3px solid black;
   padding-left: 3rem;

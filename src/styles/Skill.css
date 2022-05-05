@@ -11,5 +11,5 @@
 }
 .Skill__progress-bar[value]::-moz-progress-bar,
 .Skill__progress-bar[value]::-webkit-progress-bar {
-  background: linear-gradient(90deg, rgb(70, 217, 236), rgb(4, 68, 77));
+  background: var(--blue-gradient);
 }

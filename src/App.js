@@ -16,7 +16,6 @@ class App extends Component {
         <section className="WorkExperience-wrapper">
           <WorkExperience />
         </section>
-        <WorkExperience />
         <Education />
       </div>
     );

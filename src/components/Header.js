@@ -28,9 +28,8 @@ class Header extends Component {
             impedit qui ullam quae!
           </p>
         </div>
-        <figure className="Header__portrait">
-          <img src={photo} alt="user portrait" />
-        </figure>
+
+        <img className="Header__portrait" src={photo} alt="user portrait" />
       </header>
     );
   }
