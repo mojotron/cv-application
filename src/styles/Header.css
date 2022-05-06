@@ -5,6 +5,7 @@
   display: flex;
   justify-content: space-between;
   padding: 4rem 2rem 3rem;
+  position: relative;
 }
 .Header__info {
   width: 75%;

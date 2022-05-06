@@ -10,6 +10,9 @@
   grid-template-rows: auto;
   grid-template-areas:
     'header header header header'
-    'contacts work-xp work-xp wor-xp'
+    'contacts workXp workXp workXp'
     'skills education education education';
+
+  position: relative;
+  z-index: 1;
 }

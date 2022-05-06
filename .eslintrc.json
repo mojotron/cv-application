@@ -20,6 +20,8 @@
     "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
     "react/prop-types": "off",
     "react/destructuring-assignment": "off",
-    "no-useless-constructor": "off"
+    "no-useless-constructor": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off"
   }
 }

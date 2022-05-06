@@ -13,9 +13,7 @@ class App extends Component {
         <Header />
         <Contact />
         <Skills />
-        <section className="WorkExperience-wrapper">
-          <WorkExperience />
-        </section>
+        <WorkExperience />
         <Education />
       </div>
     );

@@ -38,3 +38,13 @@ p {
   padding: 1rem;
   background: var(--blue-gradient);
 }
+.Form {
+  height: 300px;
+  width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: aqua;
+  transform: translate(-50%, -50%);
+  opacity: 0.9;
+}
