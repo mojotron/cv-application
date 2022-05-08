@@ -10,6 +10,7 @@ html {
   --light-gray: #dadbdf;
   --font-color: #5f5f61;
   --blue-gradient: linear-gradient(90deg, rgb(4, 68, 77), rgb(70, 217, 236));
+  --blue: #248d9b;
 }
 *,
 *::before,
@@ -38,16 +39,7 @@ p {
   padding: 1rem;
   background: var(--blue-gradient);
 }
-.Form {
-  height: 300px;
-  width: 500px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background-color: aqua;
-  transform: translate(-50%, -50%);
-  opacity: 0.9;
-}
+
 .edit:hover {
   opacity: 0.5;
   cursor: pointer;

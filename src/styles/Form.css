@@ -1,0 +1,69 @@
+.Form {
+  min-height: 300px;
+  width: 500px;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  background-color: var(--dark-gray);
+  color: var(--light-gray);
+  border: 5px solid var(--blue);
+  transform: translateX(-50%);
+  opacity: 0.98;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  z-index: 10;
+}
+.Form > h2 {
+  font-size: 2rem;
+  padding: 1rem 0 2rem;
+  color: var(--blue);
+}
+.Form__field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-bottom: 1rem;
+}
+.Form__field > label {
+  font-size: 1.5rem;
+  margin-right: 2rem;
+}
+.Form__field > input,
+.Form__field > textarea {
+  width: 25rem;
+  border: none;
+  font-family: inherit;
+  padding: 0.5rem 2rem;
+  background-color: white;
+  color: var(--dark-gray);
+  border-radius: 0.5rem;
+}
+.Form__field > input {
+  width: 25rem;
+}
+.Form__field > textarea {
+  height: 10rem;
+  width: 40rem;
+}
+.Form__btn--close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  cursor: pointer;
+  border: none;
+  padding: 0.4rem;
+  font-size: 2rem;
+  border-radius: 0.4rem;
+  color: var(--dark-gray);
+  font-weight: 700;
+}
+
+.Form__btn--close:hover {
+  background: var(--blue);
+  color: var(--light-gray);
+}

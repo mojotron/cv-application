@@ -58,13 +58,14 @@ function Header() {
 
       <img
         className="Header__portrait edit"
-        src={photo}
+        src={state.imageUrl}
         alt="user portrait"
         onClick={showForm}
       />
 
       {state.formActive && (
         <Form
+          header="Personal Information's"
           fields={state}
           handleSubmit={hideForm}
           handleChange={changeValue}
