@@ -3,3 +3,6 @@
   background-color: var(--light-gray);
   padding: 2rem;
 }
+.Skills__heading {
+  padding: 1rem 0;
+}

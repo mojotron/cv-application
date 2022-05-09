@@ -1,10 +1,13 @@
 .Contacts {
   grid-area: contacts;
   background-color: var(--light-gray);
+  position: relative;
+  width: 18rem;
+  padding: 0 2rem;
 }
 .Contact__field {
   display: flex;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 0;
 }
 .Contact__field__img {
   height: 1.4rem;

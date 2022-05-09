@@ -1,6 +1,7 @@
 .Skill {
   /* display: flex;
   justify-content: space-between; */
+  position: relative;
 }
 .Skill__progress-bar {
   border: 1px solid rgb(31, 32, 32);
@@ -12,4 +13,12 @@
 .Skill__progress-bar[value]::-moz-progress-bar,
 .Skill__progress-bar[value]::-webkit-progress-bar {
   background: var(--blue-gradient);
+}
+.Skill__btn--delete {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  cursor: pointer;
+  border: none;
+  background: none;
 }

@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Contact from './components/Contacts';
 import Skills from './components/Skills';
 import WorkExperience from './components/WorkExperience';
-import Education from './components/Education';
+import Educations from './components/Educations';
 
 class App extends Component {
   render() {
@@ -14,7 +14,7 @@ class App extends Component {
         <Contact />
         <Skills />
         <WorkExperience />
-        <Education />
+        <Educations />
       </div>
     );
   }

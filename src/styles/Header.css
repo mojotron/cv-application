@@ -4,11 +4,13 @@
   background-color: var(--light-gray);
   display: flex;
   justify-content: space-between;
-  padding: 4rem 2rem 3rem;
+  padding: 4rem 2rem 0;
   position: relative;
+  min-height: 10rem;
 }
 .Header__info {
   width: 75%;
+  min-height: 10rem;
 }
 
 .Header__name {
