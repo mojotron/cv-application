@@ -3,7 +3,7 @@ import '../styles/Header.css';
 import Form from './Form';
 import photo from '../images/cv-photo-small.png';
 
-function Header() {
+function Header(props) {
   const [state, setState] = React.useState({
     firstName: 'John',
     lastName: 'Smith',
@@ -18,18 +18,8 @@ function Header() {
     soluta veritatis architecto eos? Explicabo voluptas unde voluptates
     beatae deleniti reprehenderit incidunt illo excepturi repellat
     consectetur, ipsum ratione eligendi facilis autem earum impedit qui
-    ullam quae!`,
-    formActive: false
+    ullam quae!`
   });
-
-  function showForm() {
-    setState(oldState => ({ ...oldState, formActive: true }));
-  }
-
-  function hideForm(e) {
-    e.preventDefault();
-    setState(oldState => ({ ...oldState, formActive: false }));
-  }
 
   function changeValue(e) {
     const { name, value } = e.target;
@@ -40,10 +30,16 @@ function Header() {
     <header className="Header">
       <div className="Header__info">
         <h1 className="Header__name">
-          <span className="Header__first-name edit" onClick={showForm}>
+          <span
+            className="Header__first-name edit"
+            onClick={props.handleShowForm}
+          >
             {state.firstName}
           </span>
-          <span className="Header__last-name edit" onClick={showForm}>
+          <span
+            className="Header__last-name edit"
+            onClick={props.handleShowForm}
+          >
             {state.lastName}
           </span>
         </h1>
@@ -51,7 +47,7 @@ function Header() {
           {state.position}
           <span className="Header__line" />
         </h3>
-        <p className="Header__biography edit" onClick={showForm}>
+        <p className="Header__biography edit" onClick={props.handleShowForm}>
           {state.description}
         </p>
       </div>
@@ -60,14 +56,14 @@ function Header() {
         className="Header__portrait edit"
         src={state.imageUrl}
         alt="user portrait"
-        onClick={showForm}
+        onClick={props.handleShowForm}
       />
 
-      {state.formActive && (
+      {props.formActive && (
         <Form
           header="Personal Information's"
           fields={state}
-          handleSubmit={hideForm}
+          handleSubmit={props.handleHideForm}
           handleChange={changeValue}
         />
       )}

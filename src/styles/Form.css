@@ -15,7 +15,6 @@
   align-items: center;
   padding: 2rem;
   z-index: 10;
-  pointer-events: none;
 }
 .Form > h2 {
   font-size: 1.8rem;

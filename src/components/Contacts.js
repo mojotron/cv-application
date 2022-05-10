@@ -22,22 +22,21 @@ class Contacts extends Component {
       phone: '+(000) 500 1234',
       email: 'johndow@example.com',
       webpage: 'www.john-dow.net',
-      address: 'Austin, Texas',
-      formActive: false
+      address: 'Austin, Texas'
     };
-    this.showForm = this.showForm.bind(this);
-    this.hideForm = this.hideForm.bind(this);
+    // this.showForm = this.showForm.bind(this);
+    // this.hideForm = this.hideForm.bind(this);
     this.changeValue = this.changeValue.bind(this);
   }
 
-  showForm() {
-    this.setState(oldState => ({ ...oldState, formActive: true }));
-  }
+  // showForm() {
+  //   this.setState(oldState => ({ ...oldState, formActive: true }));
+  // }
 
-  hideForm(e) {
-    e.preventDefault();
-    this.setState(oldState => ({ ...oldState, formActive: false }));
-  }
+  // hideForm(e) {
+  //   e.preventDefault();
+  //   this.setState(oldState => ({ ...oldState, formActive: false }));
+  // }
 
   changeValue(e) {
     const { name, value } = e.target;
@@ -51,7 +50,7 @@ class Contacts extends Component {
         <ContactField
           img={phoneIcon}
           data={this.state.phone}
-          handleClick={this.showForm}
+          handleClick={this.props.handleShowForm}
         />
         <ContactField
           img={emailIcon}
@@ -69,7 +68,7 @@ class Contacts extends Component {
           handleClick={this.showForm}
         />
 
-        {this.state.formActive && (
+        {this.props.formActive && (
           <Form
             header="Contact Information's"
             fields={this.state}
