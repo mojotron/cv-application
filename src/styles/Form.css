@@ -2,12 +2,12 @@
   min-height: 300px;
   width: 400px;
   position: absolute;
-  /* top: 50%;
-  left: 50%; */
+  top: 50%;
+  left: 50%;
   background-color: var(--dark-gray);
   color: var(--light-gray);
   border: 5px solid var(--blue);
-  transform: translateY(-10%);
+  transform: translate(-50%, -50%);
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
