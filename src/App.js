@@ -21,6 +21,12 @@ class App extends Component {
         // description key is used for form textbox tag
         description: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium commodi quos deserunt delectus ex nemo eum, optio possimus quisquam quas.`
       },
+      contacts: {
+        phone: '+(000) 500 1234',
+        email: 'johndow@example.com',
+        webpage: 'www.john-dow.net',
+        address: 'Austin, Texas'
+      },
       formActive: false,
       formOptions: ''
     };
@@ -39,6 +45,7 @@ class App extends Component {
   }
 
   handleChangeValue(event) {
+    console.log(event.target);
     const { field } = event.target.dataset;
     const { value } = event.target;
     this.setState(state => ({
@@ -51,7 +58,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header data={this.state.basic} handleForm={this.handleCallForm} />
-        <Contact />
+        <Contact data={this.state.contacts} handleForm={this.handleCallForm} />
         <Skills />
         <WorkExperience />
         <Educations />
