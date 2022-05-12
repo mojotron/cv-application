@@ -5,6 +5,7 @@ class Form extends Component {
   render() {
     const fields = [];
     for (const [fieldKey, fieldValue] of Object.entries(this.props.data)) {
+      if (fieldKey === 'id') continue;
       const format = fieldKey
         .split(/(?=[A-Z])/)
         .map(s => s.toLowerCase())

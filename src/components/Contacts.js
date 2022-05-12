@@ -9,7 +9,7 @@ function ContactField(props) {
   return (
     <div
       className="Contact__field edit"
-      onClick={props.handleClick}
+      onClick={props.handleForm}
       data-options="contacts"
     >
       <img className="Contact__field__img" src={props.img} alt="" />
@@ -27,22 +27,22 @@ class Contacts extends Component {
         <ContactField
           img={phoneIcon}
           data={phone}
-          handleClick={this.props.handleForm}
+          handleForm={this.props.handleForm}
         />
         <ContactField
           img={emailIcon}
           data={email}
-          handleClick={this.props.handleForm}
+          handleForm={this.props.handleForm}
         />
         <ContactField
           img={webIcon}
           data={webpage}
-          handleClick={this.props.handleForm}
+          handleForm={this.props.handleForm}
         />
         <ContactField
           img={locationIcon}
           data={address}
-          handleClick={this.props.handleForm}
+          handleForm={this.props.handleForm}
         />
       </section>
     );

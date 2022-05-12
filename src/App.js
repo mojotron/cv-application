@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uniqid from 'uniqid';
 import './styles/App.css';
 import photo from './images/cv-photo.png';
 import Header from './components/Header';
@@ -27,30 +28,131 @@ class App extends Component {
         webpage: 'www.john-dow.net',
         address: 'Austin, Texas'
       },
+      skills: [
+        { name: 'html', level: 7, id: '123' },
+        { name: 'css', level: 5, id: '234' },
+        { name: 'javascript', level: 8, id: '456' }
+      ],
+      educations: [
+        {
+          id: '123',
+          title: 'Engineer',
+          university: 'University',
+          dateStart: 'November 2011',
+          dateEnd: 'July 2015',
+          description: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium commodi quos deserunt delectus ex nemo eum, optio possimus quisquam quas.`
+        }
+      ],
+      workExperience: [
+        {
+          id: '123',
+          position: 'Junior Frontend Developer',
+          company: 'Fluffy Web Company',
+          dateStart: 'May 2015',
+          dateEnd: 'February 2018',
+          description: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium commodi quos deserunt delectus ex nemo eum, optio possimus quisquam quas.`
+        }
+      ],
       formActive: false,
-      formOptions: ''
+      dataOption: null,
+      dataId: null
     };
 
     this.handleCallForm = this.handleCallForm.bind(this);
+    this.handleCloseForm = this.handleCloseForm.bind(this);
     this.handleChangeValue = this.handleChangeValue.bind(this);
+    this.handleAddNewSkill = this.handleAddNewSkill.bind(this);
+    this.handleAddNewWork = this.handleAddNewWork.bind(this);
+    this.handleAddNewEducation = this.handleAddNewEducation.bind(this);
   }
 
   handleCallForm(event) {
     if (this.state.formActive) return;
+
+    const option =
+      event.target.dataset.options ||
+      event.target.parentElement.dataset.options;
+
+    const id =
+      event.target.dataset.id || event.target.parentElement.dataset.id || null;
+    console.log(option, id);
     this.setState(state => ({
       ...state,
       formActive: true,
-      formOptions: event.target.dataset.options
+      dataOption: option,
+      dataId: id
+    }));
+  }
+
+  handleCloseForm(event) {
+    event.preventDefault();
+    this.setState(state => ({
+      ...state,
+      formActive: false,
+      dataOption: null,
+      dataId: null
     }));
   }
 
   handleChangeValue(event) {
-    console.log(event.target);
     const { field } = event.target.dataset;
     const { value } = event.target;
+    if (this.state.dataId) {
+      const filtered = this.state[this.state.dataOption].map(ele =>
+        ele.id !== this.state.dataId ? ele : { ...ele, [field]: value }
+      );
+
+      this.setState(state => ({
+        ...state,
+        [state.dataOption]: [...filtered]
+      }));
+    } else {
+      this.setState(state => ({
+        ...state,
+        [state.dataOption]: { ...state[state.dataOption], [field]: value }
+      }));
+    }
+  }
+
+  handleAddNewSkill() {
+    if (this.state.skills.find(skill => skill.name === 'skill')) return;
     this.setState(state => ({
       ...state,
-      [state.formOptions]: { ...state[state.formOptions], [field]: value }
+      skills: [...state.skills, { name: 'skill', level: 0, id: uniqid() }]
+    }));
+  }
+
+  handleAddNewWork() {
+    this.setState(state => ({
+      ...state,
+      workExperience: [
+        ...state.workExperience,
+        {
+          id: uniqid(),
+          position: 'Junior Frontend Developer',
+          company: 'Fluffy Web Company',
+          dateStart: 'May 2015',
+          dateEnd: 'February 2018',
+          description: `Lorem ipsum, dolor sit amet consectetur`
+        }
+      ]
+    }));
+  }
+
+  handleAddNewEducation() {
+    this.setState(state => ({
+      ...state,
+      educations: [
+        ...state.educations,
+        {
+          id: uniqid(),
+          title: 'Engineer',
+          university: 'University',
+          dateStart: 'November 2011',
+          dateEnd: 'July 2015',
+          description: `Lorem ipsum, dolor sit amet consectetur adipisicing elit.`
+        }
+      ]
     }));
   }
 
@@ -59,14 +161,39 @@ class App extends Component {
       <div className="App">
         <Header data={this.state.basic} handleForm={this.handleCallForm} />
         <Contact data={this.state.contacts} handleForm={this.handleCallForm} />
-        <Skills />
-        <WorkExperience />
-        <Educations />
-        {this.state.formActive && (
+        <Skills
+          data={this.state.skills}
+          handleNewSkill={this.handleAddNewSkill}
+          handleForm={this.handleCallForm}
+        />
+        <WorkExperience
+          data={this.state.workExperience}
+          handleNewWork={this.handleAddNewWork}
+          handleForm={this.handleCallForm}
+        />
+        <Educations
+          data={this.state.educations}
+          handleNewEducation={this.handleAddNewEducation}
+          handleForm={this.handleCallForm}
+        />
+
+        {this.state.formActive && this.state.dataId && (
           <Form
-            title={this.state.formOptions}
-            data={this.state[this.state.formOptions]}
+            title={this.state.dataOption}
+            data={this.state[this.state.dataOption].find(
+              ele => ele.id === this.state.dataId
+            )}
             handleChange={this.handleChangeValue}
+            handleSubmit={this.handleCloseForm}
+          />
+        )}
+
+        {this.state.formActive && !this.state.dataId && (
+          <Form
+            title={this.state.dataOption}
+            data={this.state[this.state.dataOption]}
+            handleChange={this.handleChangeValue}
+            handleSubmit={this.handleCloseForm}
           />
         )}
       </div>
