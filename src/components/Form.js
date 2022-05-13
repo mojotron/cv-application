@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/Form.css';
+import ButtonDelete from './ButtonDelete';
 
 class Form extends Component {
   render() {
@@ -43,6 +44,9 @@ class Form extends Component {
         <button type="submit" className="Form__btn--close">
           X
         </button>
+        {this.props.delete && (
+          <ButtonDelete handleDelete={this.props.handleDelete} />
+        )}
       </form>
     );
   }

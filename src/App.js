@@ -55,7 +55,8 @@ class App extends Component {
       ],
       formActive: false,
       dataOption: null,
-      dataId: null
+      dataId: null,
+      dataDelete: false
     };
 
     this.handleCallForm = this.handleCallForm.bind(this);
@@ -64,6 +65,7 @@ class App extends Component {
     this.handleAddNewSkill = this.handleAddNewSkill.bind(this);
     this.handleAddNewWork = this.handleAddNewWork.bind(this);
     this.handleAddNewEducation = this.handleAddNewEducation.bind(this);
+    this.handleDeleteItem = this.handleDeleteItem.bind(this);
   }
 
   handleCallForm(event) {
@@ -75,12 +77,15 @@ class App extends Component {
 
     const id =
       event.target.dataset.id || event.target.parentElement.dataset.id || null;
-    console.log(option, id);
+
+    const deleteBtn = !['basic', 'contacts'].includes(option);
+
     this.setState(state => ({
       ...state,
       formActive: true,
       dataOption: option,
-      dataId: id
+      dataId: id,
+      dataDelete: deleteBtn
     }));
   }
 
@@ -90,7 +95,8 @@ class App extends Component {
       ...state,
       formActive: false,
       dataOption: null,
-      dataId: null
+      dataId: null,
+      dataDelete: false
     }));
   }
 
@@ -156,6 +162,20 @@ class App extends Component {
     }));
   }
 
+  handleDeleteItem() {
+    const filtered = this.state[this.state.dataOption].filter(
+      item => item.id !== this.state.dataId
+    );
+    this.setState(state => ({
+      ...state,
+      [state.dataOption]: filtered,
+      formActive: false,
+      dataOption: null,
+      dataId: null,
+      dataDelete: false
+    }));
+  }
+
   render() {
     return (
       <div className="App">
@@ -185,6 +205,8 @@ class App extends Component {
             )}
             handleChange={this.handleChangeValue}
             handleSubmit={this.handleCloseForm}
+            delete={this.state.dataDelete}
+            handleDelete={this.handleDeleteItem}
           />
         )}
 
