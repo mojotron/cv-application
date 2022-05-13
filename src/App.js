@@ -180,22 +180,29 @@ class App extends Component {
     return (
       <div className="App">
         <Header data={this.state.basic} handleForm={this.handleCallForm} />
-        <Contact data={this.state.contacts} handleForm={this.handleCallForm} />
-        <Skills
-          data={this.state.skills}
-          handleNewSkill={this.handleAddNewSkill}
-          handleForm={this.handleCallForm}
-        />
-        <WorkExperience
-          data={this.state.workExperience}
-          handleNewWork={this.handleAddNewWork}
-          handleForm={this.handleCallForm}
-        />
-        <Educations
-          data={this.state.educations}
-          handleNewEducation={this.handleAddNewEducation}
-          handleForm={this.handleCallForm}
-        />
+        <section className="side-section">
+          <Contact
+            data={this.state.contacts}
+            handleForm={this.handleCallForm}
+          />
+          <Skills
+            data={this.state.skills}
+            handleNewSkill={this.handleAddNewSkill}
+            handleForm={this.handleCallForm}
+          />
+        </section>
+        <section className="main-section">
+          <WorkExperience
+            data={this.state.workExperience}
+            handleNewWork={this.handleAddNewWork}
+            handleForm={this.handleCallForm}
+          />
+          <Educations
+            data={this.state.educations}
+            handleNewEducation={this.handleAddNewEducation}
+            handleForm={this.handleCallForm}
+          />
+        </section>
 
         {this.state.formActive && this.state.dataId && (
           <Form

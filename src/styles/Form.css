@@ -4,14 +4,13 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  background-color: var(--dark-gray);
+  background: var(--dark-gray);
   color: var(--light-gray);
-  border: 5px solid var(--blue);
   transform: translate(-50%, -50%);
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 2rem;
   z-index: 10;
@@ -36,30 +35,18 @@
 .Form__field > textarea {
   font-size: 1.3rem;
   width: 25rem;
-  border: none;
+  border: 1px solid var(--blue);
   font-family: inherit;
-  padding: 0.5rem 1rem;
-  background-color: white;
-  color: var(--dark-gray);
-  border-radius: 0.5rem;
+  padding: 0.9rem 1rem;
+  background-color: var(--mid-gray);
+  color: white;
+  border-radius: 0.1rem;
 }
 .Form__field > textarea {
   height: 10rem;
 }
-.Form__btn--close {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  cursor: pointer;
-  border: none;
-  padding: 0.3rem;
-  font-size: 1.5rem;
-  border-radius: 0.4rem;
-  color: var(--dark-gray);
-  font-weight: 700;
-}
 
-.Form__btn--close:hover {
-  background: var(--blue);
-  color: var(--light-gray);
+.Form__field__label {
+  font-size: 1.4rem;
+  color: #ababab;
 }

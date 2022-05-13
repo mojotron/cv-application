@@ -4,6 +4,7 @@ import phoneIcon from '../images/telephone-icon.svg';
 import emailIcon from '../images/email-icon.svg';
 import webIcon from '../images/web-icon.svg';
 import locationIcon from '../images/location-icon.svg';
+import SeparationLine from './SeparationLine';
 
 function ContactField(props) {
   return (
@@ -24,6 +25,7 @@ class Contacts extends Component {
     return (
       <section className="Contacts">
         <h2>Contact</h2>
+        <SeparationLine />
         <ContactField
           img={phoneIcon}
           data={phone}

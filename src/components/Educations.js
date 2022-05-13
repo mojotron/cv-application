@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/Education.css';
+import SeparationLine from './SeparationLine';
 
 function Education(props) {
   return (
@@ -37,6 +38,7 @@ class Educations extends Component {
         <h2 className="edit" onClick={this.props.handleNewEducation}>
           Education
         </h2>
+        <SeparationLine />
         {educationElements}
       </section>
     );

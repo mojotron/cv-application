@@ -6,7 +6,7 @@ class ButtonDelete extends Component {
   render() {
     return (
       <button
-        className="BtnDelete"
+        className="btn BtnDelete"
         type="button"
         onClick={this.props.handleDelete}
       >

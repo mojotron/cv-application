@@ -1,14 +1,18 @@
 .Skill {
-  /* display: flex;
-  justify-content: space-between; */
   position: relative;
+  color: var(--font-color);
+  font-size: 1.1rem;
+}
+.Skill h3 {
+  margin-bottom: 0.2rem;
 }
 .Skill__progress-bar {
-  border: 1px solid rgb(31, 32, 32);
+  border: 2px solid var(--font-color);
   background: white;
-  height: 1rem;
-  width: 10rem;
+  height: 1.3rem;
+  width: 14rem;
   border-radius: 0.1rem;
+  margin-bottom: 0.4rem;
 }
 .Skill__progress-bar[value]::-moz-progress-bar,
 .Skill__progress-bar[value]::-webkit-progress-bar {

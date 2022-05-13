@@ -31,8 +31,8 @@ class Form extends Component {
         );
       }
       fields.push(
-        <div key={fieldKey}>
-          <p>{format}</p>
+        <div className="Form__field" key={fieldKey}>
+          <p className="Form__field__label">{format}</p>
           {inputElement}
         </div>
       );
@@ -40,8 +40,8 @@ class Form extends Component {
     return (
       <form className="Form" onSubmit={this.props.handleSubmit}>
         <h2>{this.props.title}</h2>
-        {fields}
-        <button type="submit" className="Form__btn--close">
+        <div>{fields}</div>
+        <button type="submit" className="btn btn--close">
           X
         </button>
         {this.props.delete && (

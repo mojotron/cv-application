@@ -10,8 +10,10 @@
   grid-template-rows: auto;
   grid-template-areas:
     'header header header header'
-    'contacts workXp workXp workXp'
-    'skills education education education';
+    'side main main main'
+    'side main main main'
+    'side main main main'
+    'side main main main';
 
   position: relative;
   z-index: 1;

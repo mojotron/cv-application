@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/Skills.css';
+import SeparationLine from './SeparationLine';
 import Skill from './Skill';
 
 class Skills extends Component {
@@ -22,6 +23,7 @@ class Skills extends Component {
         >
           Skills
         </h2>
+        <SeparationLine />
         {skillElements}
       </section>
     );

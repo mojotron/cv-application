@@ -1,0 +1,16 @@
+.SeparationLine {
+  width: 100%;
+  height: 0.3rem;
+  display: flex;
+  margin-bottom: 1rem;
+}
+.SeparationLine--one {
+  height: inherit;
+  width: 25%;
+  background-color: var(--dark-gray);
+}
+.SeparationLine--two {
+  height: inherit;
+  width: 75%;
+  background: var(--blue-gradient);
+}

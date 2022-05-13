@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/WorkExperience.css';
+import SeparationLine from './SeparationLine';
 
 function Work(props) {
   return (
@@ -37,6 +38,7 @@ class WorkExperience extends Component {
         <h2 className="edit" onClick={this.props.handleNewWork}>
           Work Experience
         </h2>
+        <SeparationLine />
         {workElements}
       </div>
     );

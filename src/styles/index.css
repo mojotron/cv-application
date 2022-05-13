@@ -7,6 +7,7 @@ html {
 }
 :root {
   --dark-gray: #3a393f;
+  --mid-gray: #4b4a52;
   --light-gray: #dadbdf;
   --font-color: #5f5f61;
   --blue-gradient: linear-gradient(90deg, rgb(4, 68, 77), rgb(70, 217, 236));
@@ -43,6 +44,31 @@ p {
   opacity: 0.5;
   cursor: pointer;
 }
-.btn--delete {
-  color: transparent;
+.btn {
+  height: 2.5rem;
+  width: 2.5rem;
+  cursor: pointer;
+  border: 1px solid var(--blue);
+  background-color: var(--mid-gray);
+  padding: 0.3rem;
+  font-size: 1.5rem;
+  border-radius: 0.1rem;
+  color: var(--blue);
+  font-weight: 700;
+}
+.btn--close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+.btn--close:hover {
+  background: var(--blue);
+  color: var(--light-gray);
+}
+
+.side-section {
+  grid-area: side;
+}
+.main-section {
+  grid-area: main;
 }

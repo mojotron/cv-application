@@ -1,4 +1,18 @@
+.Educations {
+}
 .Education {
-  grid-area: education;
-  width: 35rem;
+  border-left: 1px dotted black;
+  margin-left: 1rem;
+  padding: 0 1rem 2rem 2rem;
+}
+.Education::before {
+  content: '';
+  display: inline-block;
+  height: 1rem;
+  width: 1rem;
+  background-color: var(--blue);
+  position: relative;
+  right: 2.5rem;
+  top: 1.5rem;
+  border-radius: 50rem;
 }
