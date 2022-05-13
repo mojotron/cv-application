@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
 import '../styles/Skills.css';
 import SeparationLine from './SeparationLine';
-import Skill from './Skill';
+
+function Skill(props) {
+  return (
+    <div
+      onClick={props.handleForm}
+      className="Skill edit"
+      data-options="skills"
+      data-id={props.id}
+    >
+      <h3>{props.name}</h3>
+      <progress className="Skill__progress-bar" value={props.level} max="10">
+        {props.level}%
+      </progress>
+    </div>
+  );
+}
 
 class Skills extends Component {
   render() {

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import '../styles/WorkExperience.css';
 import SeparationLine from './SeparationLine';
 
 function Work(props) {
   return (
     <div
-      className="Work edit"
+      className="main-section__item edit"
       data-options="workExperience"
       data-id={props.id}
       onClick={props.handleForm}
@@ -34,13 +33,13 @@ class WorkExperience extends Component {
       />
     ));
     return (
-      <div className="WorkExperience">
+      <section className="main-section__container">
         <h2 className="edit" onClick={this.props.handleNewWork}>
           Work Experience
         </h2>
         <SeparationLine />
         {workElements}
-      </div>
+      </section>
     );
   }
 }

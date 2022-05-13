@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import '../styles/Education.css';
 import SeparationLine from './SeparationLine';
 
 function Education(props) {
   return (
     <section
-      className="Education edit"
+      className="main-section__item edit"
       data-options="educations"
       data-id={props.id}
       onClick={props.handleForm}
@@ -34,7 +33,7 @@ class Educations extends Component {
       />
     ));
     return (
-      <section className="Educations">
+      <section className="main-section__container">
         <h2 className="edit" onClick={this.props.handleNewEducation}>
           Education
         </h2>

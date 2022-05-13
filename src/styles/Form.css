@@ -19,6 +19,8 @@
   font-size: 1.8rem;
   padding: 1rem 0 2rem;
   color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
 }
 .Form__field {
   display: flex;
