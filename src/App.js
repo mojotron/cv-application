@@ -102,7 +102,18 @@ class App extends Component {
 
   handleChangeValue(event) {
     const { field } = event.target.dataset;
-    const { value } = event.target;
+    let { value } = event.target;
+
+    if (field === 'dateStart' || field === 'dateEnd') {
+      const date = new Date(value);
+      value = `${date.getMonth()} ${date.getFullYear()}`;
+      const formatDate = new Intl.DateTimeFormat('en', {
+        month: 'long',
+        year: 'numeric'
+      });
+      value = formatDate.format(date);
+    }
+
     if (this.state.dataId) {
       const filtered = this.state[this.state.dataOption].map(ele =>
         ele.id !== this.state.dataId ? ele : { ...ele, [field]: value }

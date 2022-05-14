@@ -21,9 +21,29 @@ class Form extends Component {
             onChange={this.props.handleChange}
           />
         );
+      } else if (fieldKey === 'level') {
+        inputElement = (
+          <input
+            type="number"
+            min={0}
+            max={10}
+            data-field={fieldKey}
+            value={fieldValue}
+            onChange={this.props.handleChange}
+          />
+        );
+      } else if (fieldKey === 'dateStart' || fieldKey === 'dateEnd') {
+        inputElement = (
+          <input
+            type="date"
+            data-field={fieldKey}
+            onChange={this.props.handleChange}
+          />
+        );
       } else {
         inputElement = (
           <input
+            type="text"
             data-field={fieldKey}
             value={fieldValue}
             onChange={this.props.handleChange}

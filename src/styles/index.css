@@ -27,9 +27,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: var(--dark-gray);
 }
 p {
   color: var(--font-color);
+}
+h2 {
+  font-size: 1.8rem;
 }
 #root {
   margin-top: 1rem;
@@ -71,4 +75,8 @@ p {
 }
 .main-section {
   grid-area: main;
+}
+.description {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
 }

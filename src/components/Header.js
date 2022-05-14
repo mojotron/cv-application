@@ -33,7 +33,7 @@ class Header extends Component {
             <span className="Header__line" />
           </h3>
           <p
-            className="Header__biography edit"
+            className="Header__biography description edit"
             onClick={this.props.handleForm}
             data-options="basic"
           >

@@ -1,9 +1,10 @@
 .Contacts {
   grid-area: contacts;
-  background-color: var(--light-gray);
-  position: relative;
-  width: 18rem;
+  color: var(--mid-gray);
   padding: 0 2rem;
+}
+.Contacts p {
+  color: var(--mid-gray);
 }
 .Contact__field {
   display: flex;

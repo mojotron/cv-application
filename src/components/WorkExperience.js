@@ -9,11 +9,13 @@ function Work(props) {
       data-id={props.id}
       onClick={props.handleForm}
     >
-      <h3>
+      <h3 className="main-section__item__heading">
         {props.position} | {props.company}
       </h3>
-      <span>{props.dateStart}</span> - <span>{props.dateEnd}</span>
-      <p>{props.description}</p>
+      <p className="main-section__item__period">
+        {props.dateStart} - {props.dateEnd}
+      </p>
+      <p className="description">{props.description}</p>
     </div>
   );
 }

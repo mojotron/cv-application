@@ -42,3 +42,12 @@
   top: 1.5rem;
   border-radius: 50rem;
 }
+.main-section__item__heading {
+  padding-bottom: 1em;
+  font-size: 1.4rem;
+}
+.main-section__item__period {
+  font-size: 1.3rem;
+  padding-bottom: 0.75rem;
+  color: var(--mid-gray);
+}
