@@ -1,4 +1,5 @@
 import photo from './images/cv-photo.png';
+import { makeWorkObj, makeEduObj } from './helpers';
 
 const data = {
   basic: {
@@ -20,26 +21,8 @@ const data = {
     { name: 'css', level: 5, id: '234' },
     { name: 'javascript', level: 8, id: '456' }
   ],
-  educations: [
-    {
-      id: '123',
-      title: 'Engineer',
-      university: 'University',
-      dateStart: 'November 2011',
-      dateEnd: 'July 2015',
-      description: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium commodi quos deserunt delectus ex nemo eum, optio possimus quisquam quas.`
-    }
-  ],
-  workExperience: [
-    {
-      id: '123',
-      position: 'Junior Frontend Developer',
-      company: 'Fluffy Web Company',
-      dateStart: 'May 2015',
-      dateEnd: 'February 2018',
-      description: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium commodi quos deserunt delectus ex nemo eum, optio possimus quisquam quas.`
-    }
-  ],
+  educations: [makeEduObj()],
+  workExperience: [makeWorkObj()],
   formActive: false,
   dataOption: null,
   dataId: null,

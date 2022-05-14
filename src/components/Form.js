@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/Form.css';
-import splitOnCamelCase from '../helpers';
+import { splitOnCamelCase } from '../helpers';
 import ButtonDelete from './ButtonDelete';
 
 class Form extends Component {

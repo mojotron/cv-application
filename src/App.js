@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import uniqid from 'uniqid';
 import './styles/App.css';
 import Header from './components/Header';
 import Contact from './components/Contacts';
@@ -8,13 +7,12 @@ import WorkExperience from './components/WorkExperience';
 import Educations from './components/Educations';
 import Form from './components/Form';
 import data from './data';
+import { formatDate, makeEduObj, makeSkillObj, makeWorkObj } from './helpers';
 
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = data;
-
     this.handleCallForm = this.handleCallForm.bind(this);
     this.handleCloseForm = this.handleCloseForm.bind(this);
     this.handleChangeValue = this.handleChangeValue.bind(this);
@@ -60,15 +58,8 @@ class App extends Component {
     const { field } = event.target.dataset;
     let { value } = event.target;
 
-    if (field === 'dateStart' || field === 'dateEnd') {
-      const date = new Date(value);
-      value = `${date.getMonth()} ${date.getFullYear()}`;
-      const formatDate = new Intl.DateTimeFormat('en', {
-        month: 'long',
-        year: 'numeric'
-      });
-      value = formatDate.format(date);
-    }
+    if (field === 'dateStart' || field === 'dateEnd')
+      value = formatDate(value);
 
     if (this.state.dataId) {
       const filtered = this.state[this.state.dataOption].map(ele =>
@@ -91,41 +82,21 @@ class App extends Component {
     if (this.state.skills.find(skill => skill.name === 'skill')) return;
     this.setState(state => ({
       ...state,
-      skills: [...state.skills, { name: 'skill', level: 0, id: uniqid() }]
+      skills: [...state.skills, makeSkillObj()]
     }));
   }
 
   handleAddNewWork() {
     this.setState(state => ({
       ...state,
-      workExperience: [
-        ...state.workExperience,
-        {
-          id: uniqid(),
-          position: 'Junior Frontend Developer',
-          company: 'Fluffy Web Company',
-          dateStart: 'May 2015',
-          dateEnd: 'February 2018',
-          description: `Lorem ipsum, dolor sit amet consectetur`
-        }
-      ]
+      workExperience: [...state.workExperience, makeWorkObj()]
     }));
   }
 
   handleAddNewEducation() {
     this.setState(state => ({
       ...state,
-      educations: [
-        ...state.educations,
-        {
-          id: uniqid(),
-          title: 'Engineer',
-          university: 'University',
-          dateStart: 'November 2011',
-          dateEnd: 'July 2015',
-          description: `Lorem ipsum, dolor sit amet consectetur adipisicing elit.`
-        }
-      ]
+      educations: [...state.educations, makeEduObj()]
     }));
   }
 
