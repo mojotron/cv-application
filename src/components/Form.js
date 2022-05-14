@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/Form.css';
+import splitOnCamelCase from '../helpers';
 import ButtonDelete from './ButtonDelete';
 
 class Form extends Component {
@@ -7,10 +8,6 @@ class Form extends Component {
     const fields = [];
     for (const [fieldKey, fieldValue] of Object.entries(this.props.data)) {
       if (fieldKey === 'id') continue;
-      const format = fieldKey
-        .split(/(?=[A-Z])/)
-        .map(s => s.toLowerCase())
-        .join(' ');
 
       let inputElement;
       if (fieldKey === 'description') {
@@ -50,13 +47,15 @@ class Form extends Component {
           />
         );
       }
+
       fields.push(
         <div className="Form__field" key={fieldKey}>
-          <p className="Form__field__label">{format}</p>
+          <p className="Form__field__label">{splitOnCamelCase(fieldKey)}</p>
           {inputElement}
         </div>
       );
     }
+
     return (
       <form className="Form" onSubmit={this.props.handleSubmit}>
         <h2>{this.props.title}</h2>
