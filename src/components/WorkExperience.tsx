@@ -7,8 +7,7 @@ function Work(props) {
       className="main-section__item edit"
       data-options="workExperience"
       data-id={props.id}
-      onClick={props.handleForm}
-    >
+      onClick={props.handleForm}>
       <h3 className="main-section__item__heading">
         {props.position} | {props.company}
       </h3>

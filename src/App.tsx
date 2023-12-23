@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import './styles/App.css';
 import Header from './components/Header';
-import Contact from './components/Contacts';
+import Contacts from './components/Contacts';
 import Skills from './components/Skills';
 import WorkExperience from './components/WorkExperience';
 import Educations from './components/Educations';
 import Form from './components/Form';
-import data from './data';
-import { formatDate, makeEduObj, makeSkillObj, makeWorkObj } from './helpers';
+import data from './data.js';
+import {
+  formatDate,
+  makeEduObj,
+  makeSkillObj,
+  makeWorkObj,
+} from './helpers.js';
 
 class App extends Component {
   constructor(props) {
@@ -39,7 +44,7 @@ class App extends Component {
       formActive: true,
       dataOption: option,
       dataId: id,
-      dataDelete: deleteBtn
+      dataDelete: deleteBtn,
     }));
   }
 
@@ -50,7 +55,7 @@ class App extends Component {
       formActive: false,
       dataOption: null,
       dataId: null,
-      dataDelete: false
+      dataDelete: false,
     }));
   }
 
@@ -63,17 +68,17 @@ class App extends Component {
 
     if (this.state.dataId) {
       const filtered = this.state[this.state.dataOption].map(ele =>
-        ele.id !== this.state.dataId ? ele : { ...ele, [field]: value }
+        ele.id !== this.state.dataId ? ele : { ...ele, [field]: value },
       );
 
       this.setState(state => ({
         ...state,
-        [state.dataOption]: [...filtered]
+        [state.dataOption]: [...filtered],
       }));
     } else {
       this.setState(state => ({
         ...state,
-        [state.dataOption]: { ...state[state.dataOption], [field]: value }
+        [state.dataOption]: { ...state[state.dataOption], [field]: value },
       }));
     }
   }
@@ -82,27 +87,27 @@ class App extends Component {
     if (this.state.skills.find(skill => skill.name === 'skill')) return;
     this.setState(state => ({
       ...state,
-      skills: [...state.skills, makeSkillObj()]
+      skills: [...state.skills, makeSkillObj()],
     }));
   }
 
   handleAddNewWork() {
     this.setState(state => ({
       ...state,
-      workExperience: [...state.workExperience, makeWorkObj()]
+      workExperience: [...state.workExperience, makeWorkObj()],
     }));
   }
 
   handleAddNewEducation() {
     this.setState(state => ({
       ...state,
-      educations: [...state.educations, makeEduObj()]
+      educations: [...state.educations, makeEduObj()],
     }));
   }
 
   handleDeleteItem() {
     const filtered = this.state[this.state.dataOption].filter(
-      item => item.id !== this.state.dataId
+      item => item.id !== this.state.dataId,
     );
     this.setState(state => ({
       ...state,
@@ -110,7 +115,7 @@ class App extends Component {
       formActive: false,
       dataOption: null,
       dataId: null,
-      dataDelete: false
+      dataDelete: false,
     }));
   }
 
@@ -119,7 +124,7 @@ class App extends Component {
       <div className="App">
         <Header data={this.state.basic} handleForm={this.handleCallForm} />
         <section className="side-section">
-          <Contact
+          <Contacts
             data={this.state.contacts}
             handleForm={this.handleCallForm}
           />
@@ -146,7 +151,7 @@ class App extends Component {
           <Form
             title={this.state.dataOption}
             data={this.state[this.state.dataOption].find(
-              ele => ele.id === this.state.dataId
+              ele => ele.id === this.state.dataId,
             )}
             handleChange={this.handleChangeValue}
             handleSubmit={this.handleCloseForm}
