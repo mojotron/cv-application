@@ -1,176 +1,188 @@
-import { Component } from 'react';
-import './styles/App.css';
-import Header from './components/Header';
-import Contacts from './components/Contacts';
-import Skills from './components/Skills';
-import WorkExperience from './components/WorkExperience';
-import Educations from './components/Educations';
-import Form from './components/Form';
-import data from './data.js';
-import {
-  formatDate,
-  makeEduObj,
-  makeSkillObj,
-  makeWorkObj,
-} from './helpers.js';
+// import { Component } from 'react';
+// import './styles/App.css';
+// import Header from './components/Header';
+// import Contacts from './components/Contacts';
+// import Skills from './components/Skills';
+// import WorkExperience from './components/WorkExperience';
+// import Educations from './components/Educations';
+// import Form from './components/Form';
+// import data from './data.js';
+// import {
+//   formatDate,
+//   makeEduObj,
+//   makeSkillObj,
+//   makeWorkObj,
+// } from './helpers.js';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = data;
-    this.handleCallForm = this.handleCallForm.bind(this);
-    this.handleCloseForm = this.handleCloseForm.bind(this);
-    this.handleChangeValue = this.handleChangeValue.bind(this);
-    this.handleAddNewSkill = this.handleAddNewSkill.bind(this);
-    this.handleAddNewWork = this.handleAddNewWork.bind(this);
-    this.handleAddNewEducation = this.handleAddNewEducation.bind(this);
-    this.handleDeleteItem = this.handleDeleteItem.bind(this);
-  }
+import GeneralInfo from './components/GeneralInfo/GeneralInfo';
 
-  handleCallForm(event) {
-    if (this.state.formActive) return;
+// class App extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = data;
+//     this.handleCallForm = this.handleCallForm.bind(this);
+//     this.handleCloseForm = this.handleCloseForm.bind(this);
+//     this.handleChangeValue = this.handleChangeValue.bind(this);
+//     this.handleAddNewSkill = this.handleAddNewSkill.bind(this);
+//     this.handleAddNewWork = this.handleAddNewWork.bind(this);
+//     this.handleAddNewEducation = this.handleAddNewEducation.bind(this);
+//     this.handleDeleteItem = this.handleDeleteItem.bind(this);
+//   }
 
-    const option =
-      event.target.dataset.options ||
-      event.target.parentElement.dataset.options;
+//   handleCallForm(event) {
+//     if (this.state.formActive) return;
 
-    const id =
-      event.target.dataset.id || event.target.parentElement.dataset.id || null;
+//     const option =
+//       event.target.dataset.options ||
+//       event.target.parentElement.dataset.options;
 
-    const deleteBtn = !['basic', 'contacts'].includes(option);
+//     const id =
+//       event.target.dataset.id || event.target.parentElement.dataset.id || null;
 
-    this.setState(state => ({
-      ...state,
-      formActive: true,
-      dataOption: option,
-      dataId: id,
-      dataDelete: deleteBtn,
-    }));
-  }
+//     const deleteBtn = !['basic', 'contacts'].includes(option);
 
-  handleCloseForm(event) {
-    event.preventDefault();
-    this.setState(state => ({
-      ...state,
-      formActive: false,
-      dataOption: null,
-      dataId: null,
-      dataDelete: false,
-    }));
-  }
+//     this.setState(state => ({
+//       ...state,
+//       formActive: true,
+//       dataOption: option,
+//       dataId: id,
+//       dataDelete: deleteBtn,
+//     }));
+//   }
 
-  handleChangeValue(event) {
-    const { field } = event.target.dataset;
-    let { value } = event.target;
+//   handleCloseForm(event) {
+//     event.preventDefault();
+//     this.setState(state => ({
+//       ...state,
+//       formActive: false,
+//       dataOption: null,
+//       dataId: null,
+//       dataDelete: false,
+//     }));
+//   }
 
-    if (field === 'dateStart' || field === 'dateEnd')
-      value = formatDate(value);
+//   handleChangeValue(event) {
+//     const { field } = event.target.dataset;
+//     let { value } = event.target;
 
-    if (this.state.dataId) {
-      const filtered = this.state[this.state.dataOption].map(ele =>
-        ele.id !== this.state.dataId ? ele : { ...ele, [field]: value },
-      );
+//     if (field === 'dateStart' || field === 'dateEnd')
+//       value = formatDate(value);
 
-      this.setState(state => ({
-        ...state,
-        [state.dataOption]: [...filtered],
-      }));
-    } else {
-      this.setState(state => ({
-        ...state,
-        [state.dataOption]: { ...state[state.dataOption], [field]: value },
-      }));
-    }
-  }
+//     if (this.state.dataId) {
+//       const filtered = this.state[this.state.dataOption].map(ele =>
+//         ele.id !== this.state.dataId ? ele : { ...ele, [field]: value },
+//       );
 
-  handleAddNewSkill() {
-    if (this.state.skills.find(skill => skill.name === 'skill')) return;
-    this.setState(state => ({
-      ...state,
-      skills: [...state.skills, makeSkillObj()],
-    }));
-  }
+//       this.setState(state => ({
+//         ...state,
+//         [state.dataOption]: [...filtered],
+//       }));
+//     } else {
+//       this.setState(state => ({
+//         ...state,
+//         [state.dataOption]: { ...state[state.dataOption], [field]: value },
+//       }));
+//     }
+//   }
 
-  handleAddNewWork() {
-    this.setState(state => ({
-      ...state,
-      workExperience: [...state.workExperience, makeWorkObj()],
-    }));
-  }
+//   handleAddNewSkill() {
+//     if (this.state.skills.find(skill => skill.name === 'skill')) return;
+//     this.setState(state => ({
+//       ...state,
+//       skills: [...state.skills, makeSkillObj()],
+//     }));
+//   }
 
-  handleAddNewEducation() {
-    this.setState(state => ({
-      ...state,
-      educations: [...state.educations, makeEduObj()],
-    }));
-  }
+//   handleAddNewWork() {
+//     this.setState(state => ({
+//       ...state,
+//       workExperience: [...state.workExperience, makeWorkObj()],
+//     }));
+//   }
 
-  handleDeleteItem() {
-    const filtered = this.state[this.state.dataOption].filter(
-      item => item.id !== this.state.dataId,
-    );
-    this.setState(state => ({
-      ...state,
-      [state.dataOption]: filtered,
-      formActive: false,
-      dataOption: null,
-      dataId: null,
-      dataDelete: false,
-    }));
-  }
+//   handleAddNewEducation() {
+//     this.setState(state => ({
+//       ...state,
+//       educations: [...state.educations, makeEduObj()],
+//     }));
+//   }
 
-  render() {
-    return (
-      <div className="App">
-        <Header data={this.state.basic} handleForm={this.handleCallForm} />
-        <section className="side-section">
-          <Contacts
-            data={this.state.contacts}
-            handleForm={this.handleCallForm}
-          />
-          <Skills
-            data={this.state.skills}
-            handleNewSkill={this.handleAddNewSkill}
-            handleForm={this.handleCallForm}
-          />
-        </section>
-        <section className="main-section">
-          <WorkExperience
-            data={this.state.workExperience}
-            handleNewWork={this.handleAddNewWork}
-            handleForm={this.handleCallForm}
-          />
-          <Educations
-            data={this.state.educations}
-            handleNewEducation={this.handleAddNewEducation}
-            handleForm={this.handleCallForm}
-          />
-        </section>
+//   handleDeleteItem() {
+//     const filtered = this.state[this.state.dataOption].filter(
+//       item => item.id !== this.state.dataId,
+//     );
+//     this.setState(state => ({
+//       ...state,
+//       [state.dataOption]: filtered,
+//       formActive: false,
+//       dataOption: null,
+//       dataId: null,
+//       dataDelete: false,
+//     }));
+//   }
 
-        {this.state.formActive && this.state.dataId && (
-          <Form
-            title={this.state.dataOption}
-            data={this.state[this.state.dataOption].find(
-              ele => ele.id === this.state.dataId,
-            )}
-            handleChange={this.handleChangeValue}
-            handleSubmit={this.handleCloseForm}
-            delete={this.state.dataDelete}
-            handleDelete={this.handleDeleteItem}
-          />
-        )}
+//   render() {
+//     return (
+//       <div className="App">
+//         <Header data={this.state.basic} handleForm={this.handleCallForm} />
+//         <section className="side-section">
+//           <Contacts
+//             data={this.state.contacts}
+//             handleForm={this.handleCallForm}
+//           />
+//           <Skills
+//             data={this.state.skills}
+//             handleNewSkill={this.handleAddNewSkill}
+//             handleForm={this.handleCallForm}
+//           />
+//         </section>
+//         <section className="main-section">
+//           <WorkExperience
+//             data={this.state.workExperience}
+//             handleNewWork={this.handleAddNewWork}
+//             handleForm={this.handleCallForm}
+//           />
+//           <Educations
+//             data={this.state.educations}
+//             handleNewEducation={this.handleAddNewEducation}
+//             handleForm={this.handleCallForm}
+//           />
+//         </section>
 
-        {this.state.formActive && !this.state.dataId && (
-          <Form
-            title={this.state.dataOption}
-            data={this.state[this.state.dataOption]}
-            handleChange={this.handleChangeValue}
-            handleSubmit={this.handleCloseForm}
-          />
-        )}
-      </div>
-    );
-  }
+//         {this.state.formActive && this.state.dataId && (
+//           <Form
+//             title={this.state.dataOption}
+//             data={this.state[this.state.dataOption].find(
+//               ele => ele.id === this.state.dataId,
+//             )}
+//             handleChange={this.handleChangeValue}
+//             handleSubmit={this.handleCloseForm}
+//             delete={this.state.dataDelete}
+//             handleDelete={this.handleDeleteItem}
+//           />
+//         )}
+
+//         {this.state.formActive && !this.state.dataId && (
+//           <Form
+//             title={this.state.dataOption}
+//             data={this.state[this.state.dataOption]}
+//             handleChange={this.handleChangeValue}
+//             handleSubmit={this.handleCloseForm}
+//           />
+//         )}
+//       </div>
+//     );
+//   }
+// }
+
+// export default App;
+
+function App() {
+  return (
+    <div className="flex flex-col border border-black p-5">
+      <GeneralInfo />
+    </div>
+  );
 }
 
 export default App;
