@@ -3,6 +3,7 @@ import FullName from './FullName';
 import EditButton from '../ui/EditButton/EditButton';
 import { GeneralInfoType } from '../../types/generalInfoType';
 import { GENERAL_INFO } from '../../constants/generalInfoDefault';
+import GeneralInfoForm from './GeneralInfoForm';
 
 function GeneralInfo() {
   const [generalInfo, setGeneralInfo] =
@@ -11,7 +12,7 @@ function GeneralInfo() {
   const [openEdit, setOpenEdit] = useState(false);
 
   if (openEdit) {
-    return <p>HELLO</p>;
+    return <GeneralInfoForm data={generalInfo} />;
   }
 
   return (

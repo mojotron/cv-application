@@ -5,14 +5,29 @@ import userEvent from '@testing-library/user-event';
 import TextInput from './TextInput';
 
 describe('UI component TextInput', () => {
-  test('initial render', () => {
-    render(<TextInput value="" onType={() => {}} />);
-    const inputEle = screen.getByPlaceholderText(/type/i);
-    expect(inputEle).toHaveProperty('placeholder', 'type');
-    expect(inputEle).toHaveValue('');
+  test('type input returns input element', () => {
+    render(
+      <TextInput value="hello" onType={() => {}} placeholder="first name" />,
+    );
+    const input = screen.getByPlaceholderText(/first name/i);
+    expect(input).toHaveValue('hello');
+    expect(input).toHaveAttribute('type', 'text');
   });
 
-  test('user types into field', async () => {
+  test('type textarea returns input element', () => {
+    render(
+      <TextInput
+        value="my bio"
+        onType={() => {}}
+        type="textarea"
+        placeholder="bio"
+      />,
+    );
+    const input = screen.getByPlaceholderText(/bio/i);
+    expect(input).toHaveValue('my bio');
+  });
+
+  test('user typing flow', async () => {
     const setOnChange = vi.fn();
 
     render(
@@ -23,5 +38,38 @@ describe('UI component TextInput', () => {
     expect(inputEle).toHaveValue('');
     await user.type(inputEle, 'John');
     expect(setOnChange).toBeCalledTimes(4);
+  });
+
+  test('display max input length flow', async () => {
+    let x = '';
+    const setOnChange = vi.fn();
+
+    render(
+      <TextInput
+        placeholder="first name"
+        value=""
+        onType={setOnChange}
+        maxLength={5}
+      />,
+    );
+    const user = userEvent.setup();
+    const inputEle = screen.getByPlaceholderText(/first name/);
+    expect(screen.getByText(/\d+\/\d+/)).toHaveTextContent('0/5');
+    expect(inputEle).toHaveValue('');
+    await user.type(inputEle, 'Jon');
+    expect(screen.getByText(/\d+\/\d+/)).toHaveTextContent('5/5');
+  });
+
+  test('name props sets name attribute on input', () => {
+    render(
+      <TextInput
+        value="John"
+        placeholder="first name"
+        onType={() => {}}
+        name="firstName"
+      />,
+    );
+    const input = screen.getByPlaceholderText(/first name/i);
+    expect(input).toHaveAttribute('name', 'firstName');
   });
 });

@@ -1,5 +1,13 @@
 import { GeneralInfoType } from '../types/generalInfoType';
 
+export const GENERAL_INFO_LABELS = {
+  firstName: 'First Name',
+  lastName: 'Last Name',
+  position: 'Position',
+  bio: 'Short bio',
+  imageUrl: 'Image URL',
+};
+
 export const GENERAL_INFO: GeneralInfoType = {
   firstName: 'John',
   lastName: 'Doe',
