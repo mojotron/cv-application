@@ -5,3 +5,11 @@ export type GeneralInfoType = {
   bio: string;
   imageUrl: string;
 };
+
+export enum GeneralInfoEnum {
+  firstName = 'firstName',
+  lastName = 'lastName',
+  position = 'position',
+  bio = 'bio',
+  imageUrl = 'imageUrl',
+}
