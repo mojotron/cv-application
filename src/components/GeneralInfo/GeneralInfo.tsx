@@ -4,6 +4,9 @@ import EditButton from '../ui/EditButton/EditButton';
 import { GeneralInfoType } from '../../types/generalInfoType';
 import { GENERAL_INFO } from '../../constants/generalInfoDefault';
 import GeneralInfoForm from './GeneralInfoForm';
+import Avatar from '../ui/Avatar/Avatar';
+import Position from './Position';
+import Bio from './Bio';
 
 function GeneralInfo() {
   const [generalInfo, setGeneralInfo] =
@@ -11,23 +14,26 @@ function GeneralInfo() {
 
   const [openEdit, setOpenEdit] = useState(false);
 
-  if (openEdit) {
-    return <GeneralInfoForm data={generalInfo} />;
-  }
-
   return (
-    <section className="grid">
-      <FullName
-        firstName={generalInfo.firstName}
-        lastName={generalInfo.lastName}
-      />
-      <h2>{generalInfo.position}</h2>
-      <p>{generalInfo.bio}</p>
-      <img
-        src={generalInfo.imageUrl}
+    <section className="flex gap-8 justify-between">
+      {openEdit ? (
+        <GeneralInfoForm data={generalInfo} />
+      ) : (
+        <div className="flex flex-col relative">
+          <FullName
+            firstName={generalInfo.firstName}
+            lastName={generalInfo.lastName}
+          />
+          <Position>{generalInfo.position}</Position>
+          <Bio>{generalInfo.bio}</Bio>
+          <EditButton onClick={() => setOpenEdit(true)} />
+        </div>
+      )}
+
+      <Avatar
+        imageUrl={generalInfo.imageUrl}
         alt={`${generalInfo.firstName} ${generalInfo.lastName}`}
       />
-      <EditButton onClick={() => setOpenEdit(true)} />
     </section>
   );
 }
