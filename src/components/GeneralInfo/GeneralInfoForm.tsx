@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { GeneralInfoType, GeneralInfoEnum } from '../../types/generalInfoType';
 import TextInput from '../ui/TextInput/TextInput';
 
@@ -14,13 +14,15 @@ function GeneralInfoForm({ data }: PropsType) {
   ) => {
     const { name, value } = e.target;
 
-    setGeneralInfo(oldValue => ({ ...oldValue, [name]: value }));
+    setGeneralInfo((oldValue) => ({ ...oldValue, [name]: value }));
   };
 
-  // const handleSubmit = () => {};
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
 
   return (
-    <form className="flex flex-col">
+    <form className="flex flex-col gap-2 w-full" onSubmit={handleSubmit}>
       <TextInput
         value={generalInfo.firstName}
         onType={handleChange}
@@ -43,7 +45,12 @@ function GeneralInfoForm({ data }: PropsType) {
         onType={handleChange}
         name={GeneralInfoEnum.bio}
         type="textarea"
+        maxLength={10}
       />
+
+      <button type="submit" className="">
+        Update
+      </button>
     </form>
   );
 }

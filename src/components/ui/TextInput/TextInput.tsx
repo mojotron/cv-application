@@ -25,10 +25,11 @@ function TextInput({
     onType(e);
   };
 
-  if (type === 'input') {
-    return (
-      <div>
+  return (
+    <div className="w-full flex flex-col text-slate-700">
+      {type === 'input' && (
         <input
+          className="p-2 shadow-lg"
           type="text"
           value={value}
           name={name}
@@ -36,22 +37,22 @@ function TextInput({
           max={maxLength}
           placeholder={placeholder}
         />
-        {maxLength !== undefined && (
-          <span>
-            {value.length}/{maxLength}
-          </span>
-        )}
-      </div>
-    );
-  }
-
-  return (
-    <textarea
-      value={value}
-      name={name}
-      onChange={handleChange}
-      placeholder={placeholder}
-    />
+      )}
+      {type === 'textarea' && (
+        <textarea
+          className="p-2 shadow-lg"
+          value={value}
+          name={name}
+          onChange={handleChange}
+          placeholder={placeholder}
+        />
+      )}
+      {maxLength !== undefined && (
+        <span className="ml-auto text-slate-400 text-xs">
+          {value.length}/{maxLength}
+        </span>
+      )}
+    </div>
   );
 }
 

@@ -1,6 +1,5 @@
 import { describe, test, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import userEvent from '@testing-library/user-event';
 import TextInput from './TextInput';
 
@@ -41,23 +40,24 @@ describe('UI component TextInput', () => {
   });
 
   test('display max input length flow', async () => {
-    let x = '';
     const setOnChange = vi.fn();
 
     render(
       <TextInput
         placeholder="first name"
-        value=""
+        value="abcde"
         onType={setOnChange}
         maxLength={5}
       />,
     );
     const user = userEvent.setup();
     const inputEle = screen.getByPlaceholderText(/first name/);
-    expect(screen.getByText(/\d+\/\d+/)).toHaveTextContent('0/5');
-    expect(inputEle).toHaveValue('');
-    await user.type(inputEle, 'Jon');
     expect(screen.getByText(/\d+\/\d+/)).toHaveTextContent('5/5');
+    expect(inputEle).toHaveValue('abcde');
+    await user.type(inputEle, 'abcdefgh');
+    expect(setOnChange).toBeCalledTimes(0);
+
+    // expect(screen.getByText(/\d+\/\d+/)).toHaveTextContent('5/5');
   });
 
   test('name props sets name attribute on input', () => {
