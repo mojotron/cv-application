@@ -1,6 +1,7 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { GeneralInfoType, GeneralInfoEnum } from '../../types/generalInfoType';
 import TextInput from '../ui/TextInput/TextInput';
+import { useCvStore } from '../../store';
 
 type PropsType = {
   data: GeneralInfoType;
@@ -8,17 +9,20 @@ type PropsType = {
 
 function GeneralInfoForm({ data }: PropsType) {
   const [generalInfo, setGeneralInfo] = useState<GeneralInfoType>(data);
+  const onGeneralSubmit = useCvStore((state) => state.setGeneralInfo);
+  const setEditGeneralInfo = useCvStore((state) => state.setEditGeneralInfo);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
-
     setGeneralInfo((oldValue) => ({ ...oldValue, [name]: value }));
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    onGeneralSubmit(generalInfo);
+    setEditGeneralInfo(false);
   };
 
   return (
