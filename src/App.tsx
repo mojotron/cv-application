@@ -1,11 +1,9 @@
 import GeneralInfo from './components/GeneralInfo/GeneralInfo';
-import UploadImage from './components/ui/UploadImage/UploadImage';
 
 function App() {
   return (
-    <div className="flex flex-col p-10">
+    <div className="flex flex-col  max-w-[800px] mx-auto py-20 px-10">
       <GeneralInfo />
-      <UploadImage />
     </div>
   );
 }
