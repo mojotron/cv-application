@@ -1,16 +1,20 @@
+import { useState } from 'react';
 import { useCvStore } from '../../store';
-import { GeneralInfoType } from '../../types/generalInfoType';
+
 import EditButton from '../ui/EditButton/EditButton';
 
-type PropsType = {
-  data: GeneralInfoType;
-};
+function GeneralInfoDetails() {
+  const data = useCvStore((state) => state.generalInfo);
+  const setCurrentEdit = useCvStore((state) => state.setCurrentEdit);
 
-function GeneralInfoDetails({ data }: PropsType) {
-  const openEdit = useCvStore((state) => state.setEditGeneralInfo);
+  // TODO MAKE HOOK
+  const [isHovering, setIsHovering] = useState(false);
 
   return (
-    <div className="flex flex-col relative">
+    <div
+      className="flex flex-col relative"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}>
       <h1 className="flex gap-2 mb-4">
         <span className="text-3xl font-extrabold capitalize text-slate-700">
           {data.firstName}
@@ -23,7 +27,7 @@ function GeneralInfoDetails({ data }: PropsType) {
       <h2 className="text-lg text-slate-600 mb-2">{data.position}</h2>
       <p className="text-slate-600">{data.bio}</p>
 
-      <EditButton onClick={() => openEdit(true)} />
+      {isHovering && <EditButton onClick={() => setCurrentEdit('general')} />}
     </div>
   );
 }
