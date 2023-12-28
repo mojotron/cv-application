@@ -3,23 +3,36 @@ import { create } from 'zustand';
 import { GeneralInfoType } from './types/generalInfoType';
 import { GENERAL_INFO } from './constants/generalInfoDefault';
 
+type EditTarget = 'general' | 'image' | 'contacts' | 'education' | 'skills';
+
 type State = {
+  // edit
+  currentEdit: EditTarget | null;
   // General info
   generalInfo: GeneralInfoType;
-  editGeneralInfo: boolean;
+  // Profile image
+  profileImage: string;
 };
 type Actions = {
+  // edit
+  setCurrentEdit: (newValue: EditTarget | null) => void;
   // General info
   setGeneralInfo: (newGeneralInfo: GeneralInfoType) => void;
-  setEditGeneralInfo: (newValue: boolean) => void;
+  // Profile image
+  setProfileImage: (imageUrl: string) => void;
 };
 
 export const useCvStore = create<State & Actions>()((set) => ({
+  // edit
+  currentEdit: null,
+  setCurrentEdit: (newValue: EditTarget | null) =>
+    set((state) => ({ ...state, currentEdit: newValue })),
   // General info
   generalInfo: GENERAL_INFO,
   setGeneralInfo: (newGeneralInfo: GeneralInfoType) =>
     set((state) => ({ ...state, generalInfo: newGeneralInfo })),
-  editGeneralInfo: false,
-  setEditGeneralInfo: (newValue: boolean) =>
-    set((state) => ({ ...state, editGeneralInfo: newValue })),
+  // Profile image
+  profileImage: 'https://i.pravatar.cc/150?img=12',
+  setProfileImage: (imageUrl: string) =>
+    set((state) => ({ ...state, profileImage: imageUrl })),
 }));
