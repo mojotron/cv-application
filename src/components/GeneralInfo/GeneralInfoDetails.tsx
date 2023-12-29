@@ -1,20 +1,15 @@
-import { useState } from 'react';
 import { useCvStore } from '../../store';
-
 import EditButton from '../ui/EditButton/EditButton';
+import { useHover } from '../../hooks/useHover';
 
 function GeneralInfoDetails() {
   const data = useCvStore((state) => state.generalInfo);
   const setCurrentEdit = useCvStore((state) => state.setCurrentEdit);
 
-  // TODO MAKE HOOK
-  const [isHovering, setIsHovering] = useState(false);
+  const { hoverRef, isHovering } = useHover();
 
   return (
-    <div
-      className="flex flex-col relative"
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}>
+    <section className="flex flex-col relative w-[600px]" ref={hoverRef}>
       <h1 className="flex gap-2 mb-4">
         <span className="text-3xl font-extrabold capitalize text-slate-700">
           {data.firstName}
@@ -28,7 +23,7 @@ function GeneralInfoDetails() {
       <p className="text-slate-600">{data.bio}</p>
 
       {isHovering && <EditButton onClick={() => setCurrentEdit('general')} />}
-    </div>
+    </section>
   );
 }
 
