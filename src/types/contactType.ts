@@ -1,0 +1,24 @@
+export enum ContactOption {
+  phone = 'phone',
+  address = 'address',
+  email = 'email',
+  github = 'github',
+  website = 'website',
+  twitterX = 'twitterX',
+  facebook = 'facebook',
+  linkedin = 'linkedin',
+  instagram = 'instagram',
+}
+
+export type ContactType = {
+  [key in ContactOption]?: string;
+  // phone?: string;
+  // address?: string;
+  // email?: string;
+  // github?: string;
+  // website?: string;
+  // x?: string;
+  // facebook?: string;
+  // linkedin?: string;
+  // instagram?: string;
+};

@@ -1,3 +1,4 @@
+import Contact from './components/Contact/Contact';
 import GeneralInfoDetails from './components/GeneralInfo/GeneralInfoDetails';
 import GeneralInfoForm from './components/GeneralInfo/GeneralInfoForm';
 import Avatar from './components/ui/Avatar/Avatar';
@@ -7,7 +8,7 @@ import { useCvStore } from './store';
 function App() {
   const currentEdit = useCvStore((state) => state.currentEdit);
   return (
-    <div className="flex flex-col  max-w-[800px] mx-auto py-20 px-10">
+    <div className="flex flex-col gap-10  max-w-[800px] mx-auto py-20 px-10">
       <section className="flex gap-8 items-start">
         {currentEdit === 'general' ? (
           <GeneralInfoForm />
@@ -15,6 +16,9 @@ function App() {
           <GeneralInfoDetails />
         )}
         {currentEdit === 'image' ? <UploadImage /> : <Avatar />}
+      </section>
+      <section>
+        {currentEdit === 'contacts' ? <p>Constructing</p> : <Contact />}
       </section>
     </div>
   );
