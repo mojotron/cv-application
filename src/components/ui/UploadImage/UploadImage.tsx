@@ -1,9 +1,13 @@
 import { ChangeEvent, DragEvent, FormEvent, useState } from 'react';
+import { useCvStore } from '../../../store';
 
 function UploadImage() {
   const [dragActive, setDragActive] = useState(false);
   const [file, setFile] = useState<undefined | File>(undefined);
   const [preview, setPreview] = useState<string | ArrayBuffer | null>(null);
+
+  const setProfileImage = useCvStore((state) => state.setProfileImage);
+  const setCurrentEdit = useCvStore((state) => state.setCurrentEdit);
 
   const handleDrag = (e: FormEvent<HTMLFormElement | HTMLDivElement>) => {
     e.preventDefault();
@@ -36,10 +40,16 @@ function UploadImage() {
     imageFile.readAsDataURL(target.files[0]);
   };
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setProfileImage(preview as string);
+    setCurrentEdit(null);
+  };
   return (
     <form
       className=" relative rounded-full flex flex-col items-center"
-      onDragEnter={handleDrag}>
+      onDragEnter={handleDrag}
+      onSubmit={handleSubmit}>
       <input
         className="hidden"
         id="upload-image-file"
@@ -50,7 +60,7 @@ function UploadImage() {
       />
       <label
         htmlFor="upload-image-file"
-        className={`h-[200px] w-[200px] border border-dashed flex-col border-slate-600 flex justify-center items-center rounded-full text-sm text-center bg-no-repeat bg-cover bg-center ${
+        className={`h-[150px] w-[150px] border border-dashed flex-col border-slate-600 flex justify-center items-center rounded-full text-sm text-center bg-no-repeat bg-cover bg-center ${
           dragActive ? 'bg-blue-300' : 'bg-white'
         }`}
         style={{ backgroundImage: preview ? `URL(${preview})` : '' }}>
