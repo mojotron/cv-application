@@ -1,4 +1,5 @@
 import Contact from './components/Contact/Contact';
+import ContactEdit from './components/Contact/ContactEdit';
 import GeneralInfoDetails from './components/GeneralInfo/GeneralInfoDetails';
 import GeneralInfoForm from './components/GeneralInfo/GeneralInfoForm';
 import Avatar from './components/ui/Avatar/Avatar';
@@ -18,7 +19,7 @@ function App() {
         {currentEdit === 'image' ? <UploadImage /> : <Avatar />}
       </section>
       <section>
-        {currentEdit === 'contacts' ? <p>Constructing</p> : <Contact />}
+        {currentEdit === 'contacts' ? <ContactEdit /> : <Contact />}
       </section>
     </div>
   );
