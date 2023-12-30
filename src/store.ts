@@ -30,7 +30,7 @@ type Actions = {
 
 export const useCvStore = create<State & Actions>()((set) => ({
   // edit
-  currentEdit: null,
+  currentEdit: 'contacts',
   setCurrentEdit: (newValue: EditTarget | null) =>
     set((state) => ({ ...state, currentEdit: newValue })),
   // General info
