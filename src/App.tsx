@@ -18,7 +18,7 @@ function App() {
         )}
         {currentEdit === 'image' ? <UploadImage /> : <Avatar />}
       </section>
-      <section>
+      <section className="max-w-[300px]">
         {currentEdit === 'contacts' ? <ContactEdit /> : <Contact />}
       </section>
     </div>

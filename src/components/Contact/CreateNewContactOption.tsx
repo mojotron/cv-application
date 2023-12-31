@@ -2,12 +2,15 @@ import { useState } from 'react';
 import { useCvStore } from '../../store';
 import { ContactType } from '../../types/contactType';
 import { iconsConfig } from './iconsConfig';
+import TextInput from '../ui/TextInput/TextInput';
 
-function SelectContactOption() {
+function CreateNewContactOption() {
   const contact = useCvStore((state) => state.contact);
+  const setContact = useCvStore((state) => state.setContact);
 
   const [showOptions, setShowOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [optionValue, setOptionValue] = useState('');
 
   const nonSelectedContactOptions = Object.keys(iconsConfig).filter(
     (co) => !Object.keys(contact).includes(co),
@@ -18,7 +21,14 @@ function SelectContactOption() {
     setShowOptions(false);
   };
 
-  console.log(selectedOption);
+  const handleAddOption = () => {
+    setSelectedOption(null);
+    setOptionValue('');
+    setContact({
+      ...contact,
+      [selectedOption as keyof ContactType]: optionValue,
+    });
+  };
 
   return (
     <div>
@@ -41,8 +51,22 @@ function SelectContactOption() {
           ))}
         </ul>
       )}
+
+      {selectedOption && (
+        <TextInput
+          placeholder={`${selectedOption} field`}
+          value={optionValue}
+          onType={(e) => setOptionValue(e.target.value)}
+        />
+      )}
+
+      {optionValue.length > 0 && (
+        <button type="button" onClick={handleAddOption}>
+          Add
+        </button>
+      )}
     </div>
   );
 }
 
-export default SelectContactOption;
+export default CreateNewContactOption;
