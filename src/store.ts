@@ -15,7 +15,7 @@ type State = {
   // Profile image
   profileImage: string;
   // Contact
-  contact: ContactType;
+  contact: ContactType[];
 };
 type Actions = {
   // edit
@@ -25,7 +25,7 @@ type Actions = {
   // Profile image
   setProfileImage: (imageUrl: string) => void;
   // Contact
-  setContact: (newContact: ContactType) => void;
+  setContact: (newContact: ContactType[]) => void;
 };
 
 export const useCvStore = create<State & Actions>()((set) => ({
@@ -43,6 +43,6 @@ export const useCvStore = create<State & Actions>()((set) => ({
     set((state) => ({ ...state, profileImage: imageUrl })),
   // Contact
   contact: CONTACT,
-  setContact: (newContact: ContactType) =>
+  setContact: (newContact: ContactType[]) =>
     set((state) => ({ ...state, contact: newContact })),
 }));

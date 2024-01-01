@@ -1,14 +1,16 @@
-import { useCvStore } from '../../store';
+// import { useCvStore } from '../../store';
+import ContactList from './ContactList';
 import CreateNewContactOption from './CreateNewContactOption';
 
 function ContactEdit() {
-  const contact = useCvStore((state) => state.contact);
-  const setContact = useCvStore((state) => state.setContact);
+  // const contact = useCvStore((state) => state.contact);
+  // const setContact = useCvStore((state) => state.setContact);
 
   return (
     <div>
-      <h2>Contacts</h2>
+      <h2 className="text-lg text-slate-700">Edit Contacts Information</h2>
       <CreateNewContactOption />
+      <ContactList />
     </div>
   );
 }

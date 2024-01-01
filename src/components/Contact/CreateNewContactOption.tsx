@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useCvStore } from '../../store';
-import { ContactType } from '../../types/contactType';
+import { ContactOption, ContactType } from '../../types/contactType';
 import { iconsConfig } from './iconsConfig';
 import TextInput from '../ui/TextInput/TextInput';
 
@@ -13,7 +13,8 @@ function CreateNewContactOption() {
   const [optionValue, setOptionValue] = useState('');
 
   const nonSelectedContactOptions = Object.keys(iconsConfig).filter(
-    (co) => !Object.keys(contact).includes(co),
+    (contactOption) =>
+      !contact.find((usedOption) => usedOption.name === contactOption),
   );
 
   const handleSelectOption = (contactOption: string) => {
@@ -34,6 +35,7 @@ function CreateNewContactOption() {
     <div>
       <button
         type="button"
+        className="px-4 py-1 text-slate-500 hover:bg-slate-500 hover:text-slate-100"
         onClick={() => setShowOptions((oldValue) => !oldValue)}>
         {showOptions ? 'Hide' : 'Show'} options
       </button>
@@ -45,7 +47,9 @@ function CreateNewContactOption() {
               key={optionName}
               className="flex gap-2 items-center"
               onClick={() => handleSelectOption(optionName)}>
-              <span>{iconsConfig[optionName as keyof ContactType]}</span>
+              <span>
+                {iconsConfig[optionName as keyof typeof ContactOption]}
+              </span>
               <span>{optionName}</span>
             </li>
           ))}

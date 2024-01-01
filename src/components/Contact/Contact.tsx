@@ -2,7 +2,6 @@ import { useCvStore } from '../../store';
 // Components
 import ContactRow from './ContactRow';
 // types
-import { ContactOption, ContactType } from '../../types/contactType';
 import { useHover } from '../../hooks/useHover';
 import EditButton from '../ui/EditButton/EditButton';
 
@@ -17,12 +16,8 @@ function Contact() {
       {isHovering && <EditButton onClick={() => setCurrentEdit('contacts')} />}
 
       <h2 className="text-xl font-bold text-slate-600">Contact</h2>
-      {Object.keys(contact).map((ele) => (
-        <ContactRow
-          key={ele}
-          value={contact[ele as keyof ContactType] || ''}
-          type={ContactOption[ele as keyof ContactType]}
-        />
+      {contact.map((ele) => (
+        <ContactRow key={ele.name} data={ele} />
       ))}
     </section>
   );

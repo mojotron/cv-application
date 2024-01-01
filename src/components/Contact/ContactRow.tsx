@@ -1,11 +1,11 @@
 import { iconsConfig } from './iconsConfig';
-import { ContactOption } from '../../types/contactType';
+import { ContactType } from '../../types/contactType';
 
-function ContactRow({ value, type }: { value: string; type: ContactOption }) {
+function ContactRow({ data }: { data: ContactType }) {
   return (
     <div className="flex gap-4 text-slate-600 text-sm">
-      <span>{iconsConfig[type]}</span>
-      <span>{value}</span>
+      <span>{iconsConfig[data.name]}</span>
+      <span>{data.value}</span>
     </div>
   );
 }

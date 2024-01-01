@@ -11,7 +11,9 @@ export enum ContactOption {
 }
 
 export type ContactType = {
-  [key in ContactOption]?: string;
+  // [key in ContactOption]?: string;
+  name: keyof typeof ContactOption;
+  value: string;
   // phone?: string;
   // address?: string;
   // email?: string;
