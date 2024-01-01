@@ -37,7 +37,7 @@ function CreateNewContactOption() {
         type="button"
         className="px-4 py-1 text-slate-500 hover:bg-slate-500 hover:text-slate-100"
         onClick={() => setShowOptions((oldValue) => !oldValue)}>
-        {showOptions ? 'Hide' : 'Show'} options
+        {showOptions ? 'Hide options' : 'Add new option'}
       </button>
 
       {showOptions && (
