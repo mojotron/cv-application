@@ -9,7 +9,9 @@ function CreateNewContactOption() {
   const setContact = useCvStore((state) => state.setContact);
 
   const [showOptions, setShowOptions] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedOption, setSelectedOption] = useState<
+    null | keyof typeof ContactOption
+  >(null);
   const [optionValue, setOptionValue] = useState('');
 
   const nonSelectedContactOptions = Object.keys(iconsConfig).filter(
@@ -17,18 +19,20 @@ function CreateNewContactOption() {
       !contact.find((usedOption) => usedOption.name === contactOption),
   );
 
-  const handleSelectOption = (contactOption: string) => {
+  const handleSelectOption = (contactOption: keyof typeof ContactOption) => {
     setSelectedOption(contactOption);
     setShowOptions(false);
   };
 
   const handleAddOption = () => {
+    if (selectedOption === null) return;
     setSelectedOption(null);
     setOptionValue('');
-    setContact({
+    const newContact: ContactType[] = [
       ...contact,
-      [selectedOption as keyof ContactType]: optionValue,
-    });
+      { name: selectedOption, value: optionValue },
+    ];
+    setContact(newContact);
   };
 
   return (
@@ -46,7 +50,9 @@ function CreateNewContactOption() {
             <li
               key={optionName}
               className="flex gap-2 items-center"
-              onClick={() => handleSelectOption(optionName)}>
+              onClick={() =>
+                handleSelectOption(optionName as keyof typeof ContactOption)
+              }>
               <span>
                 {iconsConfig[optionName as keyof typeof ContactOption]}
               </span>
