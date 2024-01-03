@@ -75,7 +75,8 @@ function ContactList() {
           key={option.name}
           className="border border-1 border-slate-600 cursor-move"
           draggable
-          onDragStart={() => handleDragStart(option.name)}>
+          onDragStart={() => handleDragStart(option.name)}
+          id={option.name}>
           <ContactRow data={option} />
         </li>
       ))}
