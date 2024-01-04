@@ -1,11 +1,12 @@
 import Contact from './components/Contact/Contact';
 import ContactEdit from './components/Contact/ContactEdit';
+import Education from './components/Education/Education';
 import GeneralInfoDetails from './components/GeneralInfo/GeneralInfoDetails';
 import GeneralInfoForm from './components/GeneralInfo/GeneralInfoForm';
 import Avatar from './components/ui/Avatar/Avatar';
-import Timeline from './components/ui/Timeline/Timeline';
-import TimelineItem from './components/ui/Timeline/TimelineItem';
+
 import UploadImage from './components/ui/UploadImage/UploadImage';
+
 import { useCvStore } from './store';
 
 function App() {
@@ -23,37 +24,7 @@ function App() {
       <section className="max-w-[300px]">
         {currentEdit === 'contacts' ? <ContactEdit /> : <Contact />}
       </section> */}
-      <Timeline>
-        <TimelineItem
-          data={{
-            title: 'position',
-            institution: 'university',
-            dateStart: new Date(),
-            dateEnd: new Date(),
-            description: 'this is temp text',
-          }}
-        />
-
-        <TimelineItem
-          data={{
-            title: 'position',
-            institution: 'university',
-            dateStart: new Date(),
-            dateEnd: new Date(),
-            description: 'this is temp text',
-          }}
-        />
-
-        <TimelineItem
-          data={{
-            title: 'position',
-            institution: 'university',
-            dateStart: new Date(),
-            dateEnd: new Date(),
-            description: 'this is temp text',
-          }}
-        />
-      </Timeline>
+      <Education />
     </div>
   );
 }

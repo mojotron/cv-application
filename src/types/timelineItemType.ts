@@ -1,4 +1,5 @@
 export type TimelineItemType = {
+  id: string;
   title: string;
   institution: string;
   dateStart: Date;

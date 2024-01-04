@@ -4,6 +4,8 @@ import { GeneralInfoType } from './types/generalInfoType';
 import { GENERAL_INFO } from './constants/generalInfoDefault';
 import { ContactType } from './types/contactType';
 import { CONTACT } from './constants/contactDefaults';
+import { TimelineItemType } from './types/timelineItemType';
+import { EDUCATION } from './constants/educationDefaults';
 
 type EditTarget = 'general' | 'image' | 'contacts' | 'education' | 'skills';
 
@@ -16,6 +18,8 @@ type State = {
   profileImage: string;
   // Contact
   contact: ContactType[];
+  // Education
+  education: TimelineItemType[];
 };
 type Actions = {
   // edit
@@ -26,11 +30,13 @@ type Actions = {
   setProfileImage: (imageUrl: string) => void;
   // Contact
   setContact: (newContact: ContactType[]) => void;
+  // Education
+  setEducation: (newEducation: TimelineItemType[]) => void;
 };
 
 export const useCvStore = create<State & Actions>()((set) => ({
   // edit
-  currentEdit: 'contacts',
+  currentEdit: null,
   setCurrentEdit: (newValue: EditTarget | null) =>
     set((state) => ({ ...state, currentEdit: newValue })),
   // General info
@@ -45,4 +51,8 @@ export const useCvStore = create<State & Actions>()((set) => ({
   contact: CONTACT,
   setContact: (newContact: ContactType[]) =>
     set((state) => ({ ...state, contact: newContact })),
+  // Education
+  education: EDUCATION,
+  setEducation: (newEducation: TimelineItemType[]) =>
+    set((state) => ({ ...state, education: newEducation })),
 }));

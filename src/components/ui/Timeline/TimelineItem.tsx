@@ -1,4 +1,4 @@
-import { TimelineItemType } from '../../../types/timlineItemType';
+import { TimelineItemType } from '../../../types/timelineItemType';
 
 const formatDate = (date: Date | null) => {
   if (date === null) return null;
@@ -10,9 +10,11 @@ const formatDate = (date: Date | null) => {
 
 type PropsType = {
   data: TimelineItemType;
+  editOn: boolean;
+  onSelect: (item: TimelineItemType) => void;
 };
 
-function TimelineItem({ data }: PropsType) {
+function TimelineItem({ data, editOn, onSelect }: PropsType) {
   const formattedDateStart = formatDate(data.dateStart);
   const formattedDateEnd = formatDate(data.dateEnd);
   return (
@@ -24,10 +26,11 @@ function TimelineItem({ data }: PropsType) {
       </header>
       <div className="flex flex-col gap-1">
         <p className="text-md text-slate-500">
-          {formattedDateStart}-{formattedDateEnd}
+          {formattedDateStart} - {formattedDateEnd}
         </p>
         <p className="text-md text-slate-600">{data.description}</p>
       </div>
+      {editOn && <button>select</button>}
     </li>
   );
 }
