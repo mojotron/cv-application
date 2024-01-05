@@ -1,40 +1,21 @@
-import React, { useState } from 'react';
 import { TimelineItemType } from '../../../types/timelineItemType';
 import TextInput from '../TextInput/TextInput';
-import Timeline from './Timeline';
+import { useState } from 'react';
 
-function TimelineEdit() {
-  const [createNew, setCreateNew] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<TimelineItemType | null>(
-    null,
-  );
+type PropsType = {
+  selectedItem: TimelineItemType;
+  isNewItem: boolean;
+};
 
-  const handleCreateNewItem = () => {
-    setCreateNew(true);
-    setSelectedItem({
-      id: crypto.randomUUID(),
-      title: '',
-      institution: '',
-      dateStart: new Date(),
-      dateEnd: new Date(),
-      description: '',
-    });
-  };
-
-  const handleAddItem = () => {};
-
-  const handleDeleteItem = () => {};
-
-  const handleUpdateItem = () => {};
+function TimelineEdit({ selectedItem, isNewItem }: PropsType) {
+  console.log(selectedItem);
 
   return (
-    <section>
-      <button type="button" onClick={handleCreateNewItem}>
-        Create new
-      </button>
+    <div>
+      <form>{/* <TextInput placeholder="title" /> */}</form>
 
-      {selectedItem !== null && <form>{/* <TextInput /> */}</form>}
-    </section>
+      <button>Delete</button>
+    </div>
   );
 }
 

@@ -30,7 +30,11 @@ function TimelineItem({ data, editOn, onSelect }: PropsType) {
         </p>
         <p className="text-md text-slate-600">{data.description}</p>
       </div>
-      {editOn && <button>select</button>}
+      {editOn && (
+        <button type="button" onClick={() => onSelect(data)}>
+          select
+        </button>
+      )}
     </li>
   );
 }

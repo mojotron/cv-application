@@ -10,9 +10,13 @@ export const useHover = () => {
   const hoverRef = useCallback(
     (node: HTMLElement) => {
       if (nodeRef.current) {
+        console.log('adding hover');
+
         nodeRef.current.removeEventListener('mouseover', handleMouseOver);
         nodeRef.current.removeEventListener('mouseout', handleMouseOut);
       } else {
+        console.log('removing hover');
+
         nodeRef.current = node;
         nodeRef.current.addEventListener('mouseover', handleMouseOver);
         nodeRef.current.addEventListener('mouseout', handleMouseOut);
