@@ -4,7 +4,7 @@ import Timeline from '../ui/Timeline/Timeline';
 import { useCvStore } from '../../store';
 import TimelineItem from '../ui/Timeline/TimelineItem';
 import EditButton from '../ui/EditButton/EditButton';
-import { useHover } from '../../hooks/useHover';
+
 import { TimelineItemType } from '../../types/timelineItemType';
 import TimelineEdit from '../ui/Timeline/TimelineEdit';
 
@@ -21,13 +21,11 @@ function Education() {
     id: crypto.randomUUID(),
     title: '',
     institution: '',
-    dateStart: new Date(),
-    dateEnd: new Date(),
+    dateStart: new Date().toDateString(),
+    dateEnd: new Date().toDateString(),
     description: '',
   }));
   //
-
-  const { hoverRef, isHovering } = useHover();
 
   const handleSelectItem = (item: TimelineItemType) => {
     setSelectedItem({ ...item });
@@ -35,14 +33,12 @@ function Education() {
   };
 
   return (
-    <section ref={hoverRef} className="relative">
-      {currentEdit === null && isHovering && (
-        <EditButton
-          onClick={() => {
-            setCurrentEdit('education');
-          }}
-        />
-      )}
+    <section className="relative">
+      <EditButton
+        onClick={() => {
+          setCurrentEdit('education');
+        }}
+      />
 
       <SectionHeading>Education</SectionHeading>
 

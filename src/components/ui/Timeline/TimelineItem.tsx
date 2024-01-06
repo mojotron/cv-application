@@ -15,8 +15,8 @@ type PropsType = {
 };
 
 function TimelineItem({ data, editOn, onSelect }: PropsType) {
-  const formattedDateStart = formatDate(data.dateStart);
-  const formattedDateEnd = formatDate(data.dateEnd);
+  const formattedDateStart = formatDate(new Date(data.dateStart));
+  const formattedDateEnd = formatDate(new Date(data.dateEnd));
   return (
     <li className="pl-[20px] before:w-[20px] before:h-[20px] before:bg-slate-800 before:block before:relative before:top-[25px] before:right-[48px] before:rounded-full before:opacity-25 ">
       <header className="flex gap-2 text-lg capitalize font-bold text-slate-600 mb-2">
