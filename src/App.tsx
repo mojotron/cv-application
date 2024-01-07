@@ -12,6 +12,7 @@ import { useCvStore } from './store';
 function App() {
   const currentEdit = useCvStore((state) => state.currentEdit);
   const education = useCvStore((state) => state.education);
+  const setEducation = useCvStore((state) => state.setEducation);
   return (
     <div className="flex flex-col gap-10  max-w-[800px] mx-auto py-20 px-10">
       {/* <section className="flex gap-8 items-start">
@@ -25,7 +26,11 @@ function App() {
       <section className="max-w-[300px]">
         {currentEdit === 'contacts' ? <ContactEdit /> : <Contact />}
       </section> */}
-      <Timeline editTarget="education" items={education} />
+      <Timeline
+        editTarget="education"
+        items={education}
+        updateItems={setEducation}
+      />
     </div>
   );
 }

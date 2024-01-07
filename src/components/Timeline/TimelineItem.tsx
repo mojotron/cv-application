@@ -13,10 +13,11 @@ const formatDate = (date: string) => {
 type PropsType = {
   data: TimelineItemType;
   editOn: boolean;
-  onSelect: (item: TimelineItemType) => void;
+  onSelect: (item: string) => void;
+  onDelete: (item: string) => void;
 };
 
-function TimelineItem({ data, editOn, onSelect }: PropsType) {
+function TimelineItem({ data, editOn, onSelect, onDelete }: PropsType) {
   const formattedDateStart = formatDate(data.dateStart);
   const formattedDateEnd = formatDate(data.dateEnd);
   return (
@@ -32,7 +33,12 @@ function TimelineItem({ data, editOn, onSelect }: PropsType) {
         </p>
         <p className="text-md text-slate-600">{data.description}</p>
       </div>
-      {editOn && <Button onClick={() => onSelect(data)}>Select</Button>}
+      {editOn && (
+        <>
+          <Button onClick={() => onSelect(data.id)}>Update</Button>
+          <Button onClick={() => onDelete(data.id)}>Delete</Button>
+        </>
+      )}
     </li>
   );
 }

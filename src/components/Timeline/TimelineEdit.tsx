@@ -7,11 +7,10 @@ import Button from '../ui/Button/Button';
 type PropsType = {
   selectedItem: TimelineItemType;
   isNewItem: boolean;
-  // onDelete: (itemId: string) => void;
-  // onUpdate: (item: TimelineItemType) => void;
+  onUpdate: (item: TimelineItemType) => void;
 };
 
-function TimelineEdit({ selectedItem, isNewItem }: PropsType) {
+function TimelineEdit({ selectedItem, isNewItem, onUpdate }: PropsType) {
   const [item, setItem] = useState(() => ({ ...selectedItem }));
 
   const handleChange = (
@@ -23,11 +22,7 @@ function TimelineEdit({ selectedItem, isNewItem }: PropsType) {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (isNewItem) {
-      console.log('create');
-    } else {
-      console.log('update');
-    }
+    onUpdate(item);
   };
 
   return (
