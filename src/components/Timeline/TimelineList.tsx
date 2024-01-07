@@ -4,7 +4,7 @@ type PropsType = {
   children: ReactNode;
 };
 
-function Timeline({ children }: PropsType) {
+function TimelineList({ children }: PropsType) {
   return (
     <section>
       <ul className="border-l-4 p-4">{children}</ul>
@@ -12,4 +12,4 @@ function Timeline({ children }: PropsType) {
   );
 }
 
-export default Timeline;
+export default TimelineList;

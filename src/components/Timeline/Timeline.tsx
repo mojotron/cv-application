@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
-import SectionHeading from '../ui/SectionHeading/SectionHeading';
-import Timeline from '../ui/Timeline/Timeline';
+// hooks
+import { useState } from 'react';
 import { useCvStore } from '../../store';
-import TimelineItem from '../ui/Timeline/TimelineItem';
+// components
+import TimelineItem from './TimelineItem';
+import TimelineEdit from './TimelineEdit';
+import TimelineList from './TimelineList';
+// ui components
 import EditButton from '../ui/EditButton/EditButton';
+import SectionHeading from '../ui/SectionHeading/SectionHeading';
+// types
+import type { TimelineItemType } from '../../types/timelineItemType';
+import type { EditTarget } from '../../types/editTargetType';
 
-import { TimelineItemType } from '../../types/timelineItemType';
-import TimelineEdit from '../ui/Timeline/TimelineEdit';
+type PropsType = {
+  editTarget: EditTarget;
+  items: TimelineItemType[];
+};
 
-function Education() {
-  const education = useCvStore((state) => state.education);
+function Timeline({ editTarget, items }: PropsType) {
   const currentEdit = useCvStore((state) => state.currentEdit);
+
   const setCurrentEdit = useCvStore((state) => state.setCurrentEdit);
-
-  console.log('RENDER');
-
   // edit state
   const [isNewItem, setIsNewItem] = useState(true);
   const [selectedItem, setSelectedItem] = useState<TimelineItemType>(() => ({
@@ -33,16 +39,16 @@ function Education() {
   };
 
   return (
-    <section className="relative">
+    <section className="relative group">
       <EditButton
         onClick={() => {
-          setCurrentEdit('education');
+          setCurrentEdit(editTarget === currentEdit ? null : editTarget);
         }}
       />
 
-      <SectionHeading>Education</SectionHeading>
+      <SectionHeading>{editTarget}</SectionHeading>
 
-      {currentEdit === 'education' && (
+      {currentEdit === editTarget && (
         <TimelineEdit
           key={selectedItem.id}
           selectedItem={selectedItem}
@@ -50,18 +56,18 @@ function Education() {
         />
       )}
 
-      <Timeline>
-        {education.map((item) => (
+      <TimelineList>
+        {items.map((item) => (
           <TimelineItem
             key={item.id}
             data={item}
-            editOn={currentEdit === 'education'}
+            editOn={currentEdit === editTarget}
             onSelect={handleSelectItem}
           />
         ))}
-      </Timeline>
+      </TimelineList>
     </section>
   );
 }
 
-export default Education;
+export default Timeline;

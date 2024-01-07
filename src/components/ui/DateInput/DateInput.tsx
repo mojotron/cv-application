@@ -10,8 +10,11 @@ type PropsType = {
 function DateInput({ label, value, onChange, name }: PropsType) {
   return (
     <div>
-      <label htmlFor={label}>{label}</label>
+      <label className="text-lg text-slate-500" htmlFor={label}>
+        {label}
+      </label>
       <input
+        className="p-2 shadow-lg"
         id={label}
         type="date"
         value={value}

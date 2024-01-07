@@ -1,11 +1,13 @@
-import { TimelineItemType } from '../../../types/timelineItemType';
+import { TimelineItemType } from '../../types/timelineItemType';
+import Button from '../ui/Button/Button';
 
-const formatDate = (date: Date | null) => {
-  if (date === null) return null;
+const formatDate = (date: string) => {
+  if (date === '') return null;
+
   return new Intl.DateTimeFormat(navigator.language, {
     month: 'short',
     year: 'numeric',
-  }).format(date);
+  }).format(new Date(date));
 };
 
 type PropsType = {
@@ -15,8 +17,8 @@ type PropsType = {
 };
 
 function TimelineItem({ data, editOn, onSelect }: PropsType) {
-  const formattedDateStart = formatDate(new Date(data.dateStart));
-  const formattedDateEnd = formatDate(new Date(data.dateEnd));
+  const formattedDateStart = formatDate(data.dateStart);
+  const formattedDateEnd = formatDate(data.dateEnd);
   return (
     <li className="pl-[20px] before:w-[20px] before:h-[20px] before:bg-slate-800 before:block before:relative before:top-[25px] before:right-[48px] before:rounded-full before:opacity-25 ">
       <header className="flex gap-2 text-lg capitalize font-bold text-slate-600 mb-2">
@@ -30,11 +32,7 @@ function TimelineItem({ data, editOn, onSelect }: PropsType) {
         </p>
         <p className="text-md text-slate-600">{data.description}</p>
       </div>
-      {editOn && (
-        <button type="button" onClick={() => onSelect(data)}>
-          select
-        </button>
-      )}
+      {editOn && <Button onClick={() => onSelect(data)}>Select</Button>}
     </li>
   );
 }

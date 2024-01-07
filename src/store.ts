@@ -7,7 +7,7 @@ import { CONTACT } from './constants/contactDefaults';
 import { TimelineItemType } from './types/timelineItemType';
 import { EDUCATION } from './constants/educationDefaults';
 
-type EditTarget = 'general' | 'image' | 'contacts' | 'education' | 'skills';
+import type { EditTarget } from './types/editTargetType';
 
 type State = {
   // edit

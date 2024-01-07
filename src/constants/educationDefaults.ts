@@ -6,7 +6,7 @@ export const EDUCATION: TimelineItemType[] = [
     title: 'Major',
     institution: 'University',
     dateStart: '2020-09-30',
-    dateEnd: null,
+    dateEnd: '',
     description: 'Finished in top class.',
   },
   {
