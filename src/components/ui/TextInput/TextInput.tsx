@@ -2,7 +2,7 @@ import { ChangeEvent } from 'react';
 
 type PropsType = {
   value: string;
-  onType: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onType: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   placeholder?: string;
   name?: string;
   type?: 'input' | 'textarea';

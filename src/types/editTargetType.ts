@@ -3,4 +3,5 @@ export type EditTarget =
   | 'image'
   | 'contacts'
   | 'education'
+  | 'experience'
   | 'skills';

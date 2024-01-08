@@ -1,10 +1,13 @@
 // hooks
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 import { useCvStore } from '../../store';
 // components
 import TimelineItem from './TimelineItem';
 import TimelineEdit from './TimelineEdit';
 import TimelineList from './TimelineList';
+import TextInput from '../ui/TextInput/TextInput';
+import DateInput from '../ui/DateInput/DateInput';
+import Button from '../ui/Button/Button';
 // ui components
 import EditButton from '../ui/EditButton/EditButton';
 import SectionHeading from '../ui/SectionHeading/SectionHeading';
@@ -38,6 +41,13 @@ function Timeline({ editTarget, items, updateItems }: PropsType) {
   const [selectedItem, setSelectedItem] = useState<TimelineItemType>(() =>
     createBlankTimelineItem(),
   );
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
+    setSelectedItem((oldValue) => ({ ...oldValue, [name]: value }));
+  };
   //
 
   const handleSelectItem = (itemId: string) => {
@@ -51,12 +61,12 @@ function Timeline({ editTarget, items, updateItems }: PropsType) {
     updateItems(filteredItem);
   };
 
-  const handleUpdate = (item: TimelineItemType) => {
+  const handleUpdate = () => {
     if (isNewItem) {
-      updateItems([item, ...items]);
+      updateItems([selectedItem, ...items]);
     } else {
       const modifiedItems = items.map((oldItem) =>
-        oldItem.id === item.id ? item : oldItem,
+        oldItem.id === selectedItem.id ? selectedItem : oldItem,
       );
       updateItems(modifiedItems);
     }
@@ -75,12 +85,45 @@ function Timeline({ editTarget, items, updateItems }: PropsType) {
       <SectionHeading>{editTarget}</SectionHeading>
 
       {currentEdit === editTarget && (
-        <TimelineEdit
-          key={selectedItem.id}
-          selectedItem={selectedItem}
-          isNewItem={isNewItem}
-          onUpdate={handleUpdate}
-        />
+        <TimelineEdit>
+          <TextInput
+            name="title"
+            placeholder="title"
+            value={selectedItem.title}
+            onType={handleChange}
+          />
+          <TextInput
+            name="institution"
+            placeholder="institution"
+            value={selectedItem.institution}
+            onType={handleChange}
+          />
+          <TextInput
+            name="description"
+            placeholder="short description"
+            type="textarea"
+            value={selectedItem.description}
+            onType={handleChange}
+          />
+          <div className="flex gap-10">
+            <DateInput
+              label="start"
+              value={selectedItem.dateStart}
+              onChange={handleChange}
+              name="dateStart"
+            />
+            <DateInput
+              label="end"
+              value={selectedItem.dateEnd}
+              onChange={handleChange}
+              name="dateEnd"
+            />
+          </div>
+
+          <Button submit={true} onClick={handleUpdate}>
+            {isNewItem ? 'Add' : 'Update'}
+          </Button>
+        </TimelineEdit>
       )}
 
       <TimelineList>

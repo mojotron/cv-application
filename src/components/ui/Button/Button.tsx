@@ -9,7 +9,7 @@ type PropsType = {
 function Button({ onClick, children, submit = false }: PropsType) {
   return (
     <button
-      className="py-1 px-5 bg-transparent font-bold border-2 border-slate-400 text-slate-400 hover:border-slate-500 hover:bg-slate-200 hover:text-slate-500"
+      className="max-w-[150px] py-1 px-5 bg-transparent font-bold border-2 border-slate-400 text-slate-400 hover:border-slate-500 hover:bg-slate-200 hover:text-slate-500"
       type={submit ? 'submit' : 'button'}
       onClick={onClick}>
       {children}

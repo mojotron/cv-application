@@ -8,6 +8,7 @@ import { TimelineItemType } from './types/timelineItemType';
 import { EDUCATION } from './constants/educationDefaults';
 
 import type { EditTarget } from './types/editTargetType';
+import { EXPERIENCE } from './constants/experienceDefaults';
 
 type State = {
   // edit
@@ -20,6 +21,8 @@ type State = {
   contact: ContactType[];
   // Education
   education: TimelineItemType[];
+  // Experience
+  experience: TimelineItemType[];
 };
 type Actions = {
   // edit
@@ -32,6 +35,8 @@ type Actions = {
   setContact: (newContact: ContactType[]) => void;
   // Education
   setEducation: (newEducation: TimelineItemType[]) => void;
+  // Experience
+  setExperience: (newEducation: TimelineItemType[]) => void;
 };
 
 export const useCvStore = create<State & Actions>()((set) => ({
@@ -55,4 +60,8 @@ export const useCvStore = create<State & Actions>()((set) => ({
   education: EDUCATION,
   setEducation: (newEducation: TimelineItemType[]) =>
     set((state) => ({ ...state, education: newEducation })),
+  // Experience
+  experience: EXPERIENCE,
+  setExperience: (newEducation: TimelineItemType[]) =>
+    set((state) => ({ ...state, experience: newEducation })),
 }));

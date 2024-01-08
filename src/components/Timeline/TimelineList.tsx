@@ -7,7 +7,7 @@ type PropsType = {
 function TimelineList({ children }: PropsType) {
   return (
     <section>
-      <ul className="border-l-4 p-4">{children}</ul>
+      <ul className="border-l-4 p-4 my-8">{children}</ul>
     </section>
   );
 }
