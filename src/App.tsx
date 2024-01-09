@@ -1,20 +1,22 @@
-import Contact from './components/Contact/Contact';
-import ContactEdit from './components/Contact/ContactEdit';
-import Timeline from './components/Timeline/Timeline';
-import GeneralInfoDetails from './components/GeneralInfo/GeneralInfoDetails';
-import GeneralInfoForm from './components/GeneralInfo/GeneralInfoForm';
-import Avatar from './components/ui/Avatar/Avatar';
+// import Contact from './components/Contact/Contact';
+// import ContactEdit from './components/Contact/ContactEdit';
+// import Timeline from './components/Timeline/Timeline';
+// import GeneralInfoDetails from './components/GeneralInfo/GeneralInfoDetails';
+// import GeneralInfoForm from './components/GeneralInfo/GeneralInfoForm';
+// import Avatar from './components/ui/Avatar/Avatar';
 
-import UploadImage from './components/ui/UploadImage/UploadImage';
+import Skills from './components/Skills/Skills';
 
-import { useCvStore } from './store';
+// import UploadImage from './components/ui/UploadImage/UploadImage';
+
+// import { useCvStore } from './store';
 
 function App() {
-  const currentEdit = useCvStore((state) => state.currentEdit);
-  const education = useCvStore((state) => state.education);
-  const setEducation = useCvStore((state) => state.setEducation);
-  const experience = useCvStore((state) => state.experience);
-  const setExperience = useCvStore((state) => state.setExperience);
+  // const currentEdit = useCvStore((state) => state.currentEdit);
+  // const education = useCvStore((state) => state.education);
+  // const setEducation = useCvStore((state) => state.setEducation);
+  // const experience = useCvStore((state) => state.experience);
+  // const setExperience = useCvStore((state) => state.setExperience);
 
   return (
     <div className="flex flex-col gap-10  max-w-[800px] mx-auto py-20 px-10">
@@ -29,7 +31,7 @@ function App() {
       <section className="max-w-[300px]">
         {currentEdit === 'contacts' ? <ContactEdit /> : <Contact />}
       </section> */}
-      <section>
+      {/* <section>
         <Timeline
           editTarget="education"
           items={education}
@@ -40,7 +42,8 @@ function App() {
           items={experience}
           updateItems={setExperience}
         />
-      </section>
+      </section> */}
+      <Skills />
     </div>
   );
 }

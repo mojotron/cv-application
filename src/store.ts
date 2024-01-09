@@ -9,6 +9,8 @@ import { EDUCATION } from './constants/educationDefaults';
 
 import type { EditTarget } from './types/editTargetType';
 import { EXPERIENCE } from './constants/experienceDefaults';
+import { SkillType } from './types/skillType';
+import { SKILLS } from './constants/skillDefaults';
 
 type State = {
   // edit
@@ -23,6 +25,8 @@ type State = {
   education: TimelineItemType[];
   // Experience
   experience: TimelineItemType[];
+  // Skills
+  skills: SkillType[];
 };
 type Actions = {
   // edit
@@ -37,6 +41,8 @@ type Actions = {
   setEducation: (newEducation: TimelineItemType[]) => void;
   // Experience
   setExperience: (newEducation: TimelineItemType[]) => void;
+  // Skills
+  setSkills: (newSkills: SkillType[]) => void;
 };
 
 export const useCvStore = create<State & Actions>()((set) => ({
@@ -64,4 +70,8 @@ export const useCvStore = create<State & Actions>()((set) => ({
   experience: EXPERIENCE,
   setExperience: (newEducation: TimelineItemType[]) =>
     set((state) => ({ ...state, experience: newEducation })),
+  // Skills
+  skills: SKILLS,
+  setSkills: (newSkills: SkillType[]) =>
+    set((state) => ({ ...state, skills: newSkills })),
 }));
