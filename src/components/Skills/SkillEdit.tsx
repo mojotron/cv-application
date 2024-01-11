@@ -1,8 +1,7 @@
-import React, { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import TextInput from '../ui/TextInput/TextInput';
 import RangeInput from '../ui/RangeInput/RangeInput';
 import { SkillType } from '../../types/skillType';
-import Button from '../ui/Button/Button';
 
 // constants
 import {
@@ -10,6 +9,7 @@ import {
   MAX_SKILL,
   STEP_SKILL,
 } from '../../constants/skillDefaults';
+import ControlButton from '../ui/ControlButton/ControlButton';
 
 type PropsType = {
   skill: SkillType;
@@ -24,19 +24,24 @@ function SkillEdit({ skill }: PropsType) {
     setEditSkill((oldValue) => ({ ...oldValue, name: e.target.value }));
   };
 
+  const handleChangeLevel = (e: ChangeEvent<HTMLInputElement>) => {
+    setEditSkill((oldValue) => ({
+      ...oldValue,
+      level: Number(e.target.value),
+    }));
+  };
+
   return (
-    <form onSubmit={() => {}}>
+    <div>
       <TextInput value={editSkill.name} onType={handleChangeName} />
       <RangeInput
         key={editSkill.id}
         value={editSkill.level}
-        onChange={() => {}}
+        onChange={handleChangeLevel}
         options={{ min: MIN_SKILL, max: MAX_SKILL, step: STEP_SKILL }}
       />
-      <Button onClick={() => {}} submit={true}>
-        Update
-      </Button>
-    </form>
+      <ControlButton control="update" onClick={() => {}} />
+    </div>
   );
 }
 

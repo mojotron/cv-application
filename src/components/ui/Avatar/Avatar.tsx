@@ -1,6 +1,6 @@
 import { useHover } from '../../../hooks/useHover';
 import { useCvStore } from '../../../store';
-import EditButton from '../EditButton/EditButton';
+import EditButton from '../ControlButton/ControlButton';
 
 function Avatar() {
   const imageUrl = useCvStore((state) => state.profileImage);

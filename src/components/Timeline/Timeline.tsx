@@ -9,7 +9,7 @@ import TextInput from '../ui/TextInput/TextInput';
 import DateInput from '../ui/DateInput/DateInput';
 import Button from '../ui/Button/Button';
 // ui components
-import EditButton from '../ui/EditButton/EditButton';
+import EditButton from '../ui/ControlButton/ControlButton';
 import SectionHeading from '../ui/SectionHeading/SectionHeading';
 // types
 import type { TimelineItemType } from '../../types/timelineItemType';

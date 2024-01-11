@@ -1,5 +1,5 @@
 import { useCvStore } from '../../store';
-import EditButton from '../ui/EditButton/EditButton';
+import EditButton from '../ui/ControlButton/ControlButton';
 import { useHover } from '../../hooks/useHover';
 
 function GeneralInfoDetails() {

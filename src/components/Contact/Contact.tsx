@@ -3,7 +3,7 @@ import { useCvStore } from '../../store';
 import ContactRow from './ContactRow';
 // types
 import { useHover } from '../../hooks/useHover';
-import EditButton from '../ui/EditButton/EditButton';
+import EditButton from '../ui/ControlButton/ControlButton';
 
 function Contact() {
   const contact = useCvStore((state) => state.contact);

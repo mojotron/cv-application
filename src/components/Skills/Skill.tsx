@@ -1,5 +1,6 @@
 import { SkillType } from '../../types/skillType';
-import Button from '../ui/Button/Button';
+import ControlButton from '../ui/ControlButton/ControlButton';
+import ProgressBar from '../ui/ProgressBar/ProgressBar';
 
 type PropsType = {
   data: SkillType;
@@ -10,14 +11,14 @@ type PropsType = {
 function Skill({ data, onDelete, onSelect }: PropsType) {
   return (
     <div className="group">
-      <h3>{data.name}</h3>
-      <div className="flex">
-        <progress max={10} value={data.level} />
-        <div className="invisible group-hover:visible">
-          <Button onClick={() => onSelect(data)}>+</Button>
-          <Button onClick={() => onDelete(data.id)}>x</Button>
+      <div className="flex justify-between items-center">
+        <h3 className="text-md text-slate-600">{data.name}</h3>
+        <div className="invisible group-hover:visible flex gap-2">
+          <ControlButton control="edit" onClick={() => onSelect(data)} />
+          <ControlButton control="delete" onClick={() => onDelete(data.id)} />
         </div>
       </div>
+      <ProgressBar currentValue={data.level} maxValue={10} />
     </div>
   );
 }

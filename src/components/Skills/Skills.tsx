@@ -2,10 +2,10 @@
 import { useState } from 'react';
 import { useCvStore } from '../../store';
 
-import RangeInput from '../ui/RangeInput/RangeInput';
 import { SkillType } from '../../types/skillType';
 import Skill from './Skill';
 import SkillEdit from './SkillEdit';
+import SectionHeading from '../ui/SectionHeading/SectionHeading';
 
 function Skills() {
   const skills = useCvStore((state) => state.skills);
@@ -13,14 +13,18 @@ function Skills() {
 
   const [selectedSkill, setSelectedSkill] = useState<SkillType | null>(null);
 
-  const handleDeleteSkill = (skillId: string) => {};
+  const handleDeleteSkill = (skillId: string) => {
+    const filteredSkills = skills.filter((skill) => skill.id !== skillId);
+    setSkills(filteredSkills);
+  };
 
   const handleSelectSkill = (skill: SkillType) => {
     setSelectedSkill({ ...skill });
   };
 
   return (
-    <div>
+    <div className="flex flex-col gap-3">
+      <SectionHeading>Skills</SectionHeading>
       {skills.map((skill) => {
         return selectedSkill !== null && skill.id === selectedSkill.id ? (
           <SkillEdit skill={selectedSkill} />
