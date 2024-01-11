@@ -29,7 +29,7 @@ function TextInput({
     <div className="w-full flex flex-col text-slate-700">
       {type === 'input' && (
         <input
-          className="p-2 shadow-lg"
+          className="p-2 border border-cyan-300 bg-neutral-100 rounded-md"
           type="text"
           value={value}
           name={name}

@@ -20,7 +20,7 @@ function ControlButton({
       type="button"
       onClick={onClick}
       aria-label="edit"
-      className="text-slate-400 hover:text-slate-600 group:invisible group-hover:visible"
+      className="text-neutral-400 hover:text-cyan-600"
       style={
         absolutePosition
           ? { position: 'absolute', top: '0', right: '0' }

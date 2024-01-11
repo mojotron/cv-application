@@ -1,8 +1,7 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent } from 'react';
 import TextInput from '../ui/TextInput/TextInput';
 import RangeInput from '../ui/RangeInput/RangeInput';
-import { SkillType } from '../../types/skillType';
-
+import { useCvStore } from '../../store';
 // constants
 import {
   MIN_SKILL,
@@ -12,36 +11,44 @@ import {
 import ControlButton from '../ui/ControlButton/ControlButton';
 
 type PropsType = {
-  skill: SkillType;
+  onSkillUpdate: () => void;
 };
 
-function SkillEdit({ skill }: PropsType) {
-  const [editSkill, setEditSkill] = useState(() => skill);
+function SkillEdit({ onSkillUpdate }: PropsType) {
+  const selectedSkill = useCvStore((state) => state.selectedSkill);
+  const setSelectedSkill = useCvStore((state) => state.setSelectedSkill);
 
   const handleChangeName = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    setEditSkill((oldValue) => ({ ...oldValue, name: e.target.value }));
+    if (selectedSkill === null) return;
+    setSelectedSkill({ ...selectedSkill, name: e.target.value });
   };
 
   const handleChangeLevel = (e: ChangeEvent<HTMLInputElement>) => {
-    setEditSkill((oldValue) => ({
-      ...oldValue,
-      level: Number(e.target.value),
-    }));
+    if (selectedSkill === null) return;
+    setSelectedSkill({ ...selectedSkill, level: Number(e.target.value) });
   };
 
+  if (selectedSkill === null) return null;
+
   return (
-    <div>
-      <TextInput value={editSkill.name} onType={handleChangeName} />
-      <RangeInput
-        key={editSkill.id}
-        value={editSkill.level}
-        onChange={handleChangeLevel}
-        options={{ min: MIN_SKILL, max: MAX_SKILL, step: STEP_SKILL }}
-      />
-      <ControlButton control="update" onClick={() => {}} />
-    </div>
+    <li className="flex items-start">
+      <div>
+        <TextInput
+          value={selectedSkill.name}
+          onType={handleChangeName}
+          name="level"
+        />
+        <RangeInput
+          key={selectedSkill.id}
+          value={selectedSkill.level}
+          onChange={handleChangeLevel}
+          options={{ min: MIN_SKILL, max: MAX_SKILL, step: STEP_SKILL }}
+        />
+      </div>
+      <ControlButton control="update" size={35} onClick={onSkillUpdate} />
+    </li>
   );
 }
 

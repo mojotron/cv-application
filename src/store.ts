@@ -27,6 +27,7 @@ type State = {
   experience: TimelineItemType[];
   // Skills
   skills: SkillType[];
+  selectedSkill: SkillType | null;
 };
 type Actions = {
   // edit
@@ -43,6 +44,7 @@ type Actions = {
   setExperience: (newEducation: TimelineItemType[]) => void;
   // Skills
   setSkills: (newSkills: SkillType[]) => void;
+  setSelectedSkill: (skill: SkillType | null) => void;
 };
 
 export const useCvStore = create<State & Actions>()((set) => ({
@@ -72,6 +74,9 @@ export const useCvStore = create<State & Actions>()((set) => ({
     set((state) => ({ ...state, experience: newEducation })),
   // Skills
   skills: SKILLS,
+  selectedSkill: null,
   setSkills: (newSkills: SkillType[]) =>
     set((state) => ({ ...state, skills: newSkills })),
+  setSelectedSkill: (skill: SkillType | null) =>
+    set((state) => ({ ...state, selectedSkill: skill })),
 }));
