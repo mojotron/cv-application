@@ -13,3 +13,9 @@ export enum GeneralInfoEnum {
   bio = 'bio',
   imageUrl = 'imageUrl',
 }
+
+export enum GeneralInfoLengths {
+  name = 25,
+  position = 50,
+  bio = 500,
+}

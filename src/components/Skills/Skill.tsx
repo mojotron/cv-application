@@ -14,7 +14,7 @@ function Skill({ data, onDelete }: PropsType) {
   return (
     <li className="group">
       <div className="flex justify-between items-center">
-        <h3 className="text-md text-slate-600">{data.name}</h3>
+        <h3 className="text-md text-slate-500 font-bold">{data.name}</h3>
         <div className="invisible group-hover:visible flex gap-2">
           <ControlButton
             control="edit"

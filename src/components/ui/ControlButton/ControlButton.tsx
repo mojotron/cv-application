@@ -1,23 +1,38 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { BiEditAlt, BiTrash, BiCheck, BiPlus } from 'react-icons/bi';
+import ControlIcon from './ControlIcon';
+
+export type ControlType =
+  | 'edit'
+  | 'delete'
+  | 'update'
+  | 'new'
+  | 'cancel'
+  | 'expand'
+  | 'collapse';
+
+type ButtonType = 'button' | 'submit' | 'reset';
+
+type OptionsType = {
+  btnType: ButtonType;
+};
 
 type PropsType = {
-  onClick: () => void;
-  control: 'edit' | 'delete' | 'update' | 'new';
+  onClick?: () => void;
+  control: ControlType;
   absolutePosition?: boolean;
   size?: number;
+  options?: OptionsType;
 };
 
 function ControlButton({
-  onClick,
+  onClick = undefined,
   control,
   absolutePosition = false,
   size = 20,
+  options = undefined,
 }: PropsType) {
   return (
     <button
       title={control}
-      type="button"
       onClick={onClick}
       aria-label="edit"
       className="text-neutral-400 hover:text-cyan-600"
@@ -25,11 +40,10 @@ function ControlButton({
         absolutePosition
           ? { position: 'absolute', top: '0', right: '0' }
           : undefined
-      }>
-      {control === 'edit' && <BiEditAlt size={size} />}
-      {control === 'delete' && <BiTrash size={size} />}
-      {control === 'update' && <BiCheck size={size} />}
-      {control === 'new' && <BiPlus size={size} />}
+      }
+      // eslint-disable-next-line react/button-has-type
+      type={options === undefined ? 'button' : options.btnType}>
+      <ControlIcon controlOption={control} size={size} />
     </button>
   );
 }

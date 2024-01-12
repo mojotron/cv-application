@@ -60,8 +60,8 @@ function UploadImage() {
       />
       <label
         htmlFor="upload-image-file"
-        className={`h-[150px] w-[150px] border border-dashed flex-col border-slate-600 flex justify-center items-center rounded-full text-sm text-center bg-no-repeat bg-cover bg-center ${
-          dragActive ? 'bg-blue-300' : 'bg-white'
+        className={`overflow-hidden h-[150px] w-[150px] border border-dashed flex-col border-cyan-600 flex justify-center items-center rounded-full text-sm text-center bg-no-repeat bg-cover bg-center ${
+          dragActive ? 'bg-cyan-300' : 'bg-white'
         }`}
         style={{ backgroundImage: preview ? `URL(${preview})` : '' }}>
         <p className="px-4 hover:bg-white">Drag and drop your image here or</p>

@@ -1,57 +1,70 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
-import { GeneralInfoType, GeneralInfoEnum } from '../../types/generalInfoType';
+import { ChangeEvent, FormEvent } from 'react';
+import {
+  GeneralInfoType,
+  GeneralInfoEnum,
+  GeneralInfoLengths,
+} from '../../types/generalInfoType';
 import TextInput from '../ui/TextInput/TextInput';
 import { useCvStore } from '../../store';
+import ControlButton from '../ui/ControlButton/ControlButton';
 
 function GeneralInfoForm() {
-  const data = useCvStore((state) => state.generalInfo);
+  const generalInfo = useCvStore((state) => state.generalInfo);
   const setGeneralInfo = useCvStore((state) => state.setGeneralInfo);
   const setCurrentEdit = useCvStore((state) => state.setCurrentEdit);
-  const [generalData, setGeneralData] = useState<GeneralInfoType>(data);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
-    setGeneralData((oldValue) => ({ ...oldValue, [name]: value }));
+    const modifiedGeneralInfo: GeneralInfoType = {
+      ...generalInfo,
+      [name]: value,
+    };
+    setGeneralInfo(modifiedGeneralInfo);
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setGeneralInfo(generalData);
     setCurrentEdit(null);
   };
 
   return (
     <form className="flex flex-col gap-2 w-full" onSubmit={handleSubmit}>
       <TextInput
-        value={generalData.firstName}
+        value={generalInfo.firstName}
         onType={handleChange}
         name={GeneralInfoEnum.firstName}
         placeholder=""
-        maxLength={10}
+        maxLength={GeneralInfoLengths.name}
       />
       <TextInput
-        value={generalData.lastName}
+        value={generalInfo.lastName}
         onType={handleChange}
         name={GeneralInfoEnum.lastName}
+        maxLength={GeneralInfoLengths.name}
       />
       <TextInput
-        value={generalData.position}
+        value={generalInfo.position}
         onType={handleChange}
         name={GeneralInfoEnum.position}
+        maxLength={GeneralInfoLengths.position}
       />
       <TextInput
-        value={generalData.bio}
+        value={generalInfo.bio}
         onType={handleChange}
         name={GeneralInfoEnum.bio}
         type="textarea"
-        maxLength={10}
+        maxLength={GeneralInfoLengths.bio}
       />
 
-      <button type="submit" className="">
-        Update
-      </button>
+      <div className="ml-auto">
+        <ControlButton
+          control="update"
+          options={{ btnType: 'submit' }}
+          size={30}
+        />
+      </div>
     </form>
   );
 }

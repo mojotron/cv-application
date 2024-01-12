@@ -46,7 +46,7 @@ function Skills() {
         </div>
       </div>
 
-      <ul>
+      <ul className="flex flex-col gap-3">
         {skills.map((skill) => {
           return selectedSkill !== null && skill.id === selectedSkill.id ? (
             <SkillEdit key={skill.id} onSkillUpdate={handleUpdateSkill} />

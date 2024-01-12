@@ -5,15 +5,15 @@ import { useCvStore } from '../../store';
 import TimelineItem from './TimelineItem';
 import TimelineEdit from './TimelineEdit';
 import TimelineList from './TimelineList';
-import TextInput from '../ui/TextInput/TextInput';
-import DateInput from '../ui/DateInput/DateInput';
-import Button from '../ui/Button/Button';
+import TextInput from '../../components/ui/TextInput/TextInput';
+import DateInput from '../../components/ui/DateInput/DateInput';
 // ui components
-import EditButton from '../ui/ControlButton/ControlButton';
-import SectionHeading from '../ui/SectionHeading/SectionHeading';
+import ControlButton from '../../components/ui/ControlButton/ControlButton';
+import SectionHeading from '../../components/ui/SectionHeading/SectionHeading';
 // types
 import type { TimelineItemType } from '../../types/timelineItemType';
 import type { EditTarget } from '../../types/editTargetType';
+import HoverVisibility from '../../components/ui/HoverVisibility/HoverVisibility';
 
 const createBlankTimelineItem = () => {
   return {
@@ -76,11 +76,14 @@ function Timeline({ editTarget, items, updateItems }: PropsType) {
 
   return (
     <section className="relative group">
-      <EditButton
-        onClick={() => {
-          setCurrentEdit(editTarget === currentEdit ? null : editTarget);
-        }}
-      />
+      <HoverVisibility topRight={true}>
+        <ControlButton
+          control="edit"
+          onClick={() => {
+            setCurrentEdit(editTarget === currentEdit ? null : editTarget);
+          }}
+        />
+      </HoverVisibility>
 
       <SectionHeading>{editTarget}</SectionHeading>
 
@@ -118,11 +121,8 @@ function Timeline({ editTarget, items, updateItems }: PropsType) {
               onChange={handleChange}
               name="dateEnd"
             />
+            <ControlButton control="update" onClick={handleUpdate} size={35} />
           </div>
-
-          <Button submit={true} onClick={handleUpdate}>
-            {isNewItem ? 'Add' : 'Update'}
-          </Button>
         </TimelineEdit>
       )}
 

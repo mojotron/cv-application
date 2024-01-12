@@ -47,7 +47,14 @@ function SkillEdit({ onSkillUpdate }: PropsType) {
           options={{ min: MIN_SKILL, max: MAX_SKILL, step: STEP_SKILL }}
         />
       </div>
-      <ControlButton control="update" size={35} onClick={onSkillUpdate} />
+      <div className="flex flex-col justify-center items-center">
+        <ControlButton
+          control="cancel"
+          size={35}
+          onClick={() => setSelectedSkill(null)}
+        />
+        <ControlButton control="update" size={35} onClick={onSkillUpdate} />
+      </div>
     </li>
   );
 }

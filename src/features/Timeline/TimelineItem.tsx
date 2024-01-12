@@ -1,5 +1,5 @@
 import { TimelineItemType } from '../../types/timelineItemType';
-import Button from '../ui/Button/Button';
+import ControlButton from '../../components/ui/ControlButton/ControlButton';
 
 const formatDate = (date: string) => {
   if (date === '') return null;
@@ -27,18 +27,23 @@ function TimelineItem({ data, editOn, onSelect, onDelete }: PropsType) {
         <span>|</span>
         <h2>{data.institution}</h2>
       </header>
-      <div className="flex flex-col gap-1">
-        <p className="text-md text-slate-500">
-          {formattedDateStart} - {formattedDateEnd}
-        </p>
-        <p className="text-md text-slate-600">{data.description}</p>
+      <div className="flex justify-between gap-1">
+        <div>
+          <p className="text-md text-slate-500">
+            {formattedDateStart} - {formattedDateEnd}
+          </p>
+          <p className="text-md text-slate-600">{data.description}</p>
+        </div>
+        {editOn && (
+          <div className="flex flex-col gap-2">
+            <ControlButton control="edit" onClick={() => onSelect(data.id)} />
+            <ControlButton
+              control="delete"
+              onClick={() => onDelete(data.id)}
+            />
+          </div>
+        )}
       </div>
-      {editOn && (
-        <>
-          <Button onClick={() => onSelect(data.id)}>Update</Button>
-          <Button onClick={() => onDelete(data.id)}>Delete</Button>
-        </>
-      )}
     </li>
   );
 }

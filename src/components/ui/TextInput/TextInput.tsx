@@ -40,7 +40,7 @@ function TextInput({
       )}
       {type === 'textarea' && (
         <textarea
-          className="p-2 shadow-lg"
+          className="p-2 border border-cyan-300 bg-neutral-100 rounded-md"
           value={value}
           name={name}
           onChange={handleChange}
