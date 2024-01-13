@@ -1,6 +1,5 @@
 import Contact from './components/Contact/Contact';
 import ContactEdit from './components/Contact/ContactEdit';
-import Timeline from './features/Timeline/Timeline';
 import GeneralInfoDetails from './components/GeneralInfo/GeneralInfoDetails';
 import GeneralInfoForm from './components/GeneralInfo/GeneralInfoForm';
 import Avatar from './components/ui/Avatar/Avatar';
@@ -26,7 +25,7 @@ function App() {
         {currentEdit === 'image' ? <UploadImage /> : <Avatar />}
       </section>
       <div className="w-full flex gap-5 justify-between">
-        <section className="max-w-[400px]">
+        <section className="max-w-[400px] flex flex-col gap-6">
           {currentEdit === 'contacts' ? <ContactEdit /> : <Contact />}
           <Skills />
         </section>

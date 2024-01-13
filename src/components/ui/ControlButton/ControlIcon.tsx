@@ -4,8 +4,8 @@ import {
   BiCheck as IconUpdate,
   BiPlus as IconNew,
   BiX as IconCancel,
-  BiDownArrowAlt as IconExpand,
-  BiUpArrowAlt as IconCollapse,
+  BiDownArrow as IconExpand,
+  BiUpArrow as IconCollapse,
 } from 'react-icons/bi';
 import type { ControlType } from './ControlButton';
 

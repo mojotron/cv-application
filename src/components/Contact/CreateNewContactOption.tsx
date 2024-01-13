@@ -3,6 +3,7 @@ import { useCvStore } from '../../store';
 import { ContactOption, ContactType } from '../../types/contactType';
 import { iconsConfig } from './iconsConfig';
 import TextInput from '../ui/TextInput/TextInput';
+import ControlButton from '../ui/ControlButton/ControlButton';
 
 function CreateNewContactOption() {
   const contact = useCvStore((state) => state.contact);
@@ -36,20 +37,19 @@ function CreateNewContactOption() {
   };
 
   return (
-    <div>
-      <button
-        type="button"
-        className="px-4 py-1 text-slate-500 hover:bg-slate-500 hover:text-slate-100"
+    <div className="relative">
+      <ControlButton
+        control={showOptions ? 'collapse' : 'expand'}
         onClick={() => setShowOptions((oldValue) => !oldValue)}>
-        {showOptions ? 'Hide options' : 'Add new option'}
-      </button>
+        Select Contact Field
+      </ControlButton>
 
       {showOptions && (
-        <ul className="flex flex-col gap-2 py-2 shadow-lg">
+        <ul className="w-full rounded-md py-4 flex flex-col shadow-lg absolute bg-white border border-cyan-400 transition-all ease-in-out delay-250">
           {nonSelectedContactOptions.map((optionName) => (
             <li
               key={optionName}
-              className="flex gap-2 items-center"
+              className="py-2 pl-6 rounded-lg flex gap-2 items-center hover:text-cyan-700 cursor-pointer hover:bg-cyan-100"
               onClick={() =>
                 handleSelectOption(optionName as keyof typeof ContactOption)
               }>
@@ -63,17 +63,28 @@ function CreateNewContactOption() {
       )}
 
       {selectedOption && (
-        <TextInput
-          placeholder={`${selectedOption} field`}
-          value={optionValue}
-          onType={(e) => setOptionValue(e.target.value)}
-        />
-      )}
+        <div className="flex items-center justify-between gap-1 mt-1 mb-5">
+          <TextInput
+            placeholder={`${selectedOption} field`}
+            value={optionValue}
+            onType={(e) => setOptionValue(e.target.value)}
+          />
 
-      {optionValue.length > 0 && (
-        <button type="button" onClick={handleAddOption}>
-          Add
-        </button>
+          <div className="flex flex-col justify-center items-center gap-0">
+            <ControlButton
+              control="cancel"
+              onClick={() => setSelectedOption(null)}
+              size={25}
+            />
+            {optionValue.length > 0 && (
+              <ControlButton
+                control="update"
+                onClick={handleAddOption}
+                size={25}
+              />
+            )}
+          </div>
+        </div>
       )}
     </div>
   );

@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import ControlIcon from './ControlIcon';
 
 export type ControlType =
@@ -21,6 +22,7 @@ type PropsType = {
   absolutePosition?: boolean;
   size?: number;
   options?: OptionsType;
+  children?: ReactNode;
 };
 
 function ControlButton({
@@ -29,13 +31,14 @@ function ControlButton({
   absolutePosition = false,
   size = 20,
   options = undefined,
+  children = undefined,
 }: PropsType) {
   return (
     <button
       title={control}
       onClick={onClick}
       aria-label="edit"
-      className="text-neutral-400 hover:text-cyan-600"
+      className="text-neutral-400 hover:text-cyan-600 flex items-center gap-2"
       style={
         absolutePosition
           ? { position: 'absolute', top: '0', right: '0' }
@@ -44,6 +47,7 @@ function ControlButton({
       // eslint-disable-next-line react/button-has-type
       type={options === undefined ? 'button' : options.btnType}>
       <ControlIcon controlOption={control} size={size} />
+      {children !== undefined && children}
     </button>
   );
 }

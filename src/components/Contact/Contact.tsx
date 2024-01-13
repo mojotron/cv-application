@@ -21,9 +21,11 @@ function Contact() {
 
       <SectionHeading>Contact</SectionHeading>
 
-      {contact.map((ele) => (
-        <ContactRow key={ele.name} data={ele} />
-      ))}
+      <ul className="flex flex-col gap-2">
+        {contact.map((ele) => (
+          <ContactRow key={ele.name} data={ele} />
+        ))}
+      </ul>
     </section>
   );
 }

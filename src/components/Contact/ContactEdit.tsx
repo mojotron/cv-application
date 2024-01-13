@@ -1,5 +1,7 @@
 // import { useCvStore } from '../../store';
 import { useCvStore } from '../../store';
+import ControlButton from '../ui/ControlButton/ControlButton';
+import SectionHeading from '../ui/SectionHeading/SectionHeading';
 import ContactList from './ContactList';
 import CreateNewContactOption from './CreateNewContactOption';
 
@@ -9,14 +11,18 @@ function ContactEdit() {
   const setCurrentEdit = useCvStore((state) => state.setCurrentEdit);
 
   return (
-    <div>
-      <h2 className="text-lg text-slate-700">Edit Contacts Information</h2>
+    <div className="flex flex-col gap-2">
+      <SectionHeading>Edit Contacts</SectionHeading>
       <CreateNewContactOption />
       <ContactList />
 
-      <button type="button" onClick={() => setCurrentEdit(null)}>
-        Finish editing
-      </button>
+      <div className="ml-auto">
+        <ControlButton
+          control="update"
+          onClick={() => setCurrentEdit(null)}
+          size={30}
+        />
+      </div>
     </div>
   );
 }

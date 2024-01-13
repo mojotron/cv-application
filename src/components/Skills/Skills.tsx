@@ -6,6 +6,7 @@ import Skill from './Skill';
 import SkillEdit from './SkillEdit';
 import SectionHeading from '../ui/SectionHeading/SectionHeading';
 import ControlButton from '../ui/ControlButton/ControlButton';
+import HoverVisibility from '../ui/HoverVisibility/HoverVisibility';
 
 function Skills() {
   const skills = useCvStore((state) => state.skills);
@@ -39,11 +40,12 @@ function Skills() {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="group flex gap-3 items-center cursor-pointer">
-        <SectionHeading>Skills</SectionHeading>
-        <div className="invisible group-hover:visible flex items-center">
+      <div className="group flex gap-3 items-center cursor-pointer relative">
+        <HoverVisibility topRight={true}>
           <ControlButton control="new" onClick={handleAddNewSkill} size={25} />
-        </div>
+        </HoverVisibility>
+
+        <SectionHeading>Skills</SectionHeading>
       </div>
 
       <ul className="flex flex-col gap-3">
