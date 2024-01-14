@@ -45,7 +45,7 @@ function CreateNewContactOption() {
       </ControlButton>
 
       {showOptions && (
-        <ul className="w-full rounded-md py-4 flex flex-col shadow-lg absolute bg-white border border-cyan-400 transition-all ease-in-out delay-250">
+        <ul className="w-full rounded-md py-4 flex flex-col shadow-lg absolute bg-white border border-cyan-400 transition-all ease-in-out delay-250 z-10">
           {nonSelectedContactOptions.map((optionName) => (
             <li
               key={optionName}

@@ -1,9 +1,8 @@
-import { IoTrashBin } from 'react-icons/io5';
 import { DragEvent, useState, useRef } from 'react';
 import { useCvStore } from '../../store';
 import ContactRow from './ContactRow';
 
-function ContactList() {
+function ContactListEdit() {
   const contact = useCvStore((state) => state.contact);
   const setContact = useCvStore((state) => state.setContact);
   // store index of dragged element
@@ -41,15 +40,19 @@ function ContactList() {
     e.preventDefault();
   };
   // handlers delete items
-  const handleDragEnterDelete = () => {
+  const handleDragEnterDelete = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
     setDraggedOverDelete(true);
   };
-  const handleDragLeaveDelete = () => {
+  const handleDragLeaveDelete = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
     setDraggedOverDelete(false);
   };
   const handleOnDropDelete = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
+    e.stopPropagation();
     if (draggedItem === null) return;
+    if (draggedOverDelete === false) return;
     const id = contact[draggedItem].name;
     const newContacts = contact.filter((c) => c.name !== id);
     setContact(newContacts);
@@ -59,8 +62,8 @@ function ContactList() {
   };
 
   return (
-    <div className="border border-3 border-slate-800">
-      <ul className=" p-4 flex flex-col gap-3">
+    <div className="w-full border border-3 border-neutral-400 rounded-md overflow-hidden flex flex-col gap-1">
+      <ul className="flex flex-col gap-1">
         {contact.map((option, index) => (
           <li
             // DRAG handlers
@@ -70,7 +73,7 @@ function ContactList() {
             onDragEnd={handleDragEnd}
             onDragOver={handleDragOver}
             // - - - - - - - - - - - -
-            className="border border-1 border-slate-600 cursor-move"
+            className="py-2 px-2 cursor-move bg-neutral-200"
             key={option.name}
             id={option.name}>
             <ContactRow data={option} />
@@ -79,18 +82,19 @@ function ContactList() {
       </ul>
       <div
         // DRAG handlers
-        onDragEnter={handleDragEnterDelete}
+        onDragOver={handleDragEnterDelete}
         onDragLeave={handleDragLeaveDelete}
-        onDragOver={handleDragOver}
         onDrop={handleOnDropDelete}
         // - - - - - - - - - - - -
-        className={`text-red-300 ml-auto border bg-blue-200 ${
-          draggedOverDelete ? 'bg-red-400' : 'bg-transparent'
+        className={`text-sm flex items-center justify-center relative h-10 w-full ${
+          draggedOverDelete
+            ? 'bg-red-400 text-red-200'
+            : 'bg-transparent text-red-400'
         }`}>
-        <IoTrashBin size={40} />
+        Delete Drop Zone
       </div>
     </div>
   );
 }
 
-export default ContactList;
+export default ContactListEdit;

@@ -2,7 +2,7 @@
 import { useCvStore } from '../../store';
 import ControlButton from '../ui/ControlButton/ControlButton';
 import SectionHeading from '../ui/SectionHeading/SectionHeading';
-import ContactList from './ContactList';
+import ContactListEdit from './ContactListEdit';
 import CreateNewContactOption from './CreateNewContactOption';
 
 function ContactEdit() {
@@ -14,7 +14,7 @@ function ContactEdit() {
     <div className="flex flex-col gap-2">
       <SectionHeading>Edit Contacts</SectionHeading>
       <CreateNewContactOption />
-      <ContactList />
+      <ContactListEdit />
 
       <div className="ml-auto">
         <ControlButton
