@@ -14,9 +14,9 @@ function ProgressBar({
   const filled = Math.round((currentValue / maxValue) * 100);
 
   return (
-    <div className="h-4 w-full bg-neutral-200 p-0.5 rounded-md">
+    <div className="h-4 w-full bg-neutral-300 p-0.5 rounded-md">
       <div
-        className="h-full rounded-md bg-gradient-to-r from-cyan-200 via-cyan-400 to-cyan-600"
+        className="h-full rounded-md bg-gradient-to-r from-cyan-400 via-cyan-600 to-cyan-800"
         style={{ width: `${filled}%` }}>
         {showPercentage ? (
           <div className="text-cyan-100 text-xs text-right relative right-1 bottom-0.5">

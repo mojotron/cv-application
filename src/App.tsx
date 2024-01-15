@@ -1,36 +1,39 @@
+// hooks
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useReactToPrint } from 'react-to-print';
+import { useRef } from 'react';
+// components
 import Contact from './components/Contact/Contact';
-import ContactEdit from './components/Contact/ContactEdit';
-import GeneralInfoDetails from './components/GeneralInfo/GeneralInfoDetails';
-import GeneralInfoForm from './components/GeneralInfo/GeneralInfoForm';
-import Avatar from './components/ui/Avatar/Avatar';
-
+import GeneralInfo from './components/GeneralInfo/GeneralInfo';
 import Skills from './components/Skills/Skills';
-
-import UploadImage from './components/ui/UploadImage/UploadImage';
-
-import { useCvStore } from './store';
-import ExperienceAndEducation from './components/ExperiencAndEducation/ExperienceAndEducation';
+import ExperienceAndEducation from './components/ExperienceAndEducation/ExperienceAndEducation';
+import ProfileImage from './components/ProfileImage/ProfileImage';
+import PrintButton from './components/ui/PrintButton/PrintButton';
 
 function App() {
-  const currentEdit = useCvStore((state) => state.currentEdit);
+  const printRef = useRef<HTMLSelectElement>(null);
+
+  const handlePrintCv = useReactToPrint({ content: () => printRef.current });
 
   return (
-    <div className="flex flex-col gap-10  max-w-[800px] mx-auto py-20 px-10">
-      <section className="flex gap-8 items-start">
-        {currentEdit === 'general' ? (
-          <GeneralInfoForm />
-        ) : (
-          <GeneralInfoDetails />
-        )}
-        {currentEdit === 'image' ? <UploadImage /> : <Avatar />}
+    <div>
+      <PrintButton onPrint={handlePrintCv} />
+
+      <section
+        ref={printRef}
+        className="flex flex-col gap-10 max-w-[800px] mx-auto py-20 px-10">
+        <header className="flex gap-10">
+          <GeneralInfo />
+          <ProfileImage />
+        </header>
+        <main className="flex gap-10">
+          <aside className="flex flex-col gap-10">
+            <Contact />
+            <Skills />
+          </aside>
+          <ExperienceAndEducation />
+        </main>
       </section>
-      <div className="w-full flex gap-5 justify-between">
-        <section className="max-w-[400px] flex flex-col gap-6">
-          {currentEdit === 'contacts' ? <ContactEdit /> : <Contact />}
-          <Skills />
-        </section>
-        <ExperienceAndEducation />
-      </div>
     </div>
   );
 }

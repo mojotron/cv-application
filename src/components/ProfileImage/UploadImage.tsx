@@ -1,5 +1,5 @@
 import { ChangeEvent, DragEvent, FormEvent, useState } from 'react';
-import { useCvStore } from '../../../store';
+import { useCvStore } from '../../store';
 
 function UploadImage() {
   const [dragActive, setDragActive] = useState(false);

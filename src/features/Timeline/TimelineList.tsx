@@ -5,11 +5,7 @@ type PropsType = {
 };
 
 function TimelineList({ children }: PropsType) {
-  return (
-    <section>
-      <ul className="border-l-4 p-4 my-8">{children}</ul>
-    </section>
-  );
+  return <ul className="border-l-4 border-neutral-300 px-4">{children}</ul>;
 }
 
 export default TimelineList;

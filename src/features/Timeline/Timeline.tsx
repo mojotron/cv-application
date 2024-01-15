@@ -75,7 +75,7 @@ function Timeline({ editTarget, items, updateItems }: PropsType) {
   };
 
   return (
-    <section className="relative group">
+    <section className="relative group flex flex-col gap-5">
       <HoverVisibility topRight={true}>
         <ControlButton
           control="edit"

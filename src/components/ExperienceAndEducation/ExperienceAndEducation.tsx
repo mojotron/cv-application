@@ -8,20 +8,18 @@ function ExperienceAndEducation() {
   const setExperience = useCvStore((state) => state.setExperience);
 
   return (
-    <div>
-      <section>
-        <Timeline
-          editTarget="experience"
-          items={experience}
-          updateItems={setExperience}
-        />
-        <Timeline
-          editTarget="education"
-          items={education}
-          updateItems={setEducation}
-        />
-      </section>
-    </div>
+    <section className="flex flex-col gap-10">
+      <Timeline
+        editTarget="experience"
+        items={experience}
+        updateItems={setExperience}
+      />
+      <Timeline
+        editTarget="education"
+        items={education}
+        updateItems={setEducation}
+      />
+    </section>
   );
 }
 

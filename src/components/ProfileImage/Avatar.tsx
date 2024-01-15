@@ -1,6 +1,6 @@
-import { useCvStore } from '../../../store';
-import ControlButton from '../ControlButton/ControlButton';
-import HoverVisibility from '../HoverVisibility/HoverVisibility';
+import { useCvStore } from '../../store';
+import ControlButton from '../ui/ControlButton/ControlButton';
+import HoverVisibility from '../ui/HoverVisibility/HoverVisibility';
 
 function Avatar() {
   const imageUrl = useCvStore((state) => state.profileImage);

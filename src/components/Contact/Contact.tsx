@@ -1,31 +1,13 @@
 import { useCvStore } from '../../store';
-// Components
-import ContactRow from './ContactRow';
-// ui Components
-import ControlButton from '../ui/ControlButton/ControlButton';
-import SectionHeading from '../ui/SectionHeading/SectionHeading';
-import HoverVisibility from '../ui/HoverVisibility/HoverVisibility';
+import ContactDetails from './ContactDetails';
+import ContactEdit from './ContactEdit';
 
 function Contact() {
-  const contact = useCvStore((state) => state.contact);
-  const setCurrentEdit = useCvStore((state) => state.setCurrentEdit);
+  const currentEdit = useCvStore((state) => state.currentEdit);
 
   return (
-    <section className="flex flex-col gap-3 relative group">
-      <HoverVisibility topRight={true}>
-        <ControlButton
-          control="edit"
-          onClick={() => setCurrentEdit('contacts')}
-        />
-      </HoverVisibility>
-
-      <SectionHeading>Contact</SectionHeading>
-
-      <ul className="flex flex-col gap-2">
-        {contact.map((ele) => (
-          <ContactRow key={ele.name} data={ele} />
-        ))}
-      </ul>
+    <section>
+      {currentEdit === 'contacts' ? <ContactEdit /> : <ContactDetails />}
     </section>
   );
 }
