@@ -7,7 +7,8 @@ export const EXPERIENCE: TimelineItemType[] = [
     institution: 'Awesome Company',
     dateStart: '2020-09-30',
     dateEnd: '',
-    description: 'Finished in top class.',
+    description:
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium commodi quos deserunt delectus ex nemo eum, optio possimus quisquam quas.',
   },
   {
     id: crypto.randomUUID(),
@@ -15,6 +16,7 @@ export const EXPERIENCE: TimelineItemType[] = [
     institution: 'Awesome Company',
     dateStart: '2016-09-30',
     dateEnd: '2020-06-15',
-    description: 'Finished in top class.',
+    description:
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium commodi quos deserunt delectus ex nemo eum, optio possimus quisquam quas. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium commodi quos deserunt delectus ex nemo eum, optio possimus quisquam quas.',
   },
 ];

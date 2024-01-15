@@ -1,9 +1,14 @@
+// hooks
 import { useState } from 'react';
 import { useCvStore } from '../../store';
-import { ContactOption, ContactType } from '../../types/contactType';
+// types
+import type { ContactOption, ContactType } from '../../types/contactType';
 import { iconsConfig } from './iconsConfig';
+// ui components
 import TextInput from '../ui/TextInput/TextInput';
 import ControlButton from '../ui/ControlButton/ControlButton';
+// constants
+import { TEXT_LENGTHS } from '../../constants/inputTextLengths';
 
 function CreateNewContactOption() {
   const contact = useCvStore((state) => state.contact);
@@ -45,7 +50,7 @@ function CreateNewContactOption() {
       </ControlButton>
 
       {showOptions && (
-        <ul className="w-full rounded-md py-4 flex flex-col shadow-lg absolute bg-white border border-cyan-400 transition-all ease-in-out delay-250 z-10">
+        <ul className="w-full rounded-md  flex flex-col shadow-2xl absolute bg-white border border-cyan-500 transition-all ease-in-out delay-250 z-10">
           {nonSelectedContactOptions.map((optionName) => (
             <li
               key={optionName}
@@ -56,7 +61,7 @@ function CreateNewContactOption() {
               <span>
                 {iconsConfig[optionName as keyof typeof ContactOption]}
               </span>
-              <span>{optionName}</span>
+              <span className="text-slate-600">{optionName}</span>
             </li>
           ))}
         </ul>
@@ -68,6 +73,7 @@ function CreateNewContactOption() {
             placeholder={`${selectedOption} field`}
             value={optionValue}
             onType={(e) => setOptionValue(e.target.value)}
+            maxLength={TEXT_LENGTHS.contact}
           />
 
           <div className="flex flex-col justify-center items-center gap-0">

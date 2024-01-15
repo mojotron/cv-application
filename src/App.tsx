@@ -21,7 +21,7 @@ function App() {
 
       <section
         ref={printRef}
-        className="flex flex-col gap-10 max-w-[800px] mx-auto py-20 px-10">
+        className="flex flex-col gap-10 max-w-[800px] mx-auto py-20 px-20">
         <header className="flex gap-10">
           <GeneralInfo />
           <ProfileImage />

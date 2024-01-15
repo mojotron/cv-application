@@ -4,7 +4,7 @@ export enum ContactOption {
   email = 'email',
   github = 'github',
   website = 'website',
-  twitterX = 'twitterX',
+  x = 'x',
   facebook = 'facebook',
   linkedin = 'linkedin',
   instagram = 'instagram',

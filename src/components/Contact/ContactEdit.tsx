@@ -1,13 +1,13 @@
-// import { useCvStore } from '../../store';
+// hooks
 import { useCvStore } from '../../store';
+// ui components
 import ControlButton from '../ui/ControlButton/ControlButton';
 import SectionHeading from '../ui/SectionHeading/SectionHeading';
+// components
 import ContactListEdit from './ContactListEdit';
 import CreateNewContactOption from './CreateNewContactOption';
 
 function ContactEdit() {
-  // const contact = useCvStore((state) => state.contact);
-  // const setContact = useCvStore((state) => state.setContact);
   const setCurrentEdit = useCvStore((state) => state.setCurrentEdit);
 
   return (

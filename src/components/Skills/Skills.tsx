@@ -13,6 +13,8 @@ function Skills() {
   const setSkills = useCvStore((state) => state.setSkills);
   const selectedSkill = useCvStore((state) => state.selectedSkill);
   const setSelectedSkill = useCvStore((state) => state.setSelectedSkill);
+  const currentEdit = useCvStore((state) => state.currentEdit);
+  const setCurrentEdit = useCvStore((state) => state.setCurrentEdit);
 
   const handleDeleteSkill = (skillId: string) => {
     const filteredSkills = skills.filter((skill) => skill.id !== skillId);
@@ -26,6 +28,7 @@ function Skills() {
     );
     setSkills(modifiedSkills);
     setSelectedSkill(null);
+    setCurrentEdit(null);
   };
 
   const handleAddNewSkill = () => {
@@ -36,21 +39,30 @@ function Skills() {
     };
     setSkills([...skills, newSkill]);
     setSelectedSkill({ ...newSkill });
+    setCurrentEdit('skills');
   };
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 w-full">
       <div className="group flex gap-3 items-center cursor-pointer relative">
-        <HoverVisibility topRight={true}>
-          <ControlButton control="new" onClick={handleAddNewSkill} size={25} />
-        </HoverVisibility>
+        {currentEdit === null && (
+          <HoverVisibility topRight={true}>
+            <ControlButton
+              control="new"
+              onClick={handleAddNewSkill}
+              size={25}
+            />
+          </HoverVisibility>
+        )}
 
         <SectionHeading>Skills</SectionHeading>
       </div>
 
       <ul className="flex flex-col gap-3">
         {skills.map((skill) => {
-          return selectedSkill !== null && skill.id === selectedSkill.id ? (
+          return selectedSkill !== null &&
+            skill.id === selectedSkill.id &&
+            currentEdit === 'skills' ? (
             <SkillEdit key={skill.id} onSkillUpdate={handleUpdateSkill} />
           ) : (
             <Skill key={skill.id} data={skill} onDelete={handleDeleteSkill} />

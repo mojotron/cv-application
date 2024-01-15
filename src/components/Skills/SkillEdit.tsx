@@ -1,14 +1,17 @@
+// hooks
 import { ChangeEvent } from 'react';
+import { useCvStore } from '../../store';
+// ui components
 import TextInput from '../ui/TextInput/TextInput';
 import RangeInput from '../ui/RangeInput/RangeInput';
-import { useCvStore } from '../../store';
+import ControlButton from '../ui/ControlButton/ControlButton';
 // constants
 import {
   MIN_SKILL,
   MAX_SKILL,
   STEP_SKILL,
 } from '../../constants/skillDefaults';
-import ControlButton from '../ui/ControlButton/ControlButton';
+import { TEXT_LENGTHS } from '../../constants/inputTextLengths';
 
 type PropsType = {
   onSkillUpdate: () => void;
@@ -39,6 +42,7 @@ function SkillEdit({ onSkillUpdate }: PropsType) {
           value={selectedSkill.name}
           onType={handleChangeName}
           name="level"
+          maxLength={TEXT_LENGTHS.skill}
         />
         <RangeInput
           key={selectedSkill.id}
