@@ -7,7 +7,7 @@ import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: 'https://mojotron.github.io/cv-application/',
+  base: '/cv-application/',
   plugins: [react()],
   test: {
     globals: true,

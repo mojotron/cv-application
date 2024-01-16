@@ -2,7 +2,7 @@
 
 This project is part of [The Odin Project](https://www.theodinproject.com/) curriculum. Goal of this project is to learn basics of React library by creating simple Resume(CV) builder application.
 
-[Live preview](https://mojotron-cv-app.netlify.app/) of this project, hosted by Netlify.
+[Live preview](https://mojotron.github.io/cv-application/) of this project, hosted by Netlify.
 
 ### What have I learned
 
@@ -25,3 +25,4 @@ This project is part of [The Odin Project](https://www.theodinproject.com/) curr
 - add typescript
 - style with tailwind
 - add unit test
+- use local storage to keep state

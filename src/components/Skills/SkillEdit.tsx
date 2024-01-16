@@ -20,6 +20,7 @@ type PropsType = {
 function SkillEdit({ onSkillUpdate }: PropsType) {
   const selectedSkill = useCvStore((state) => state.selectedSkill);
   const setSelectedSkill = useCvStore((state) => state.setSelectedSkill);
+  const setCurrentEdit = useCvStore((state) => state.setCurrentEdit);
 
   const handleChangeName = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -31,6 +32,11 @@ function SkillEdit({ onSkillUpdate }: PropsType) {
   const handleChangeLevel = (e: ChangeEvent<HTMLInputElement>) => {
     if (selectedSkill === null) return;
     setSelectedSkill({ ...selectedSkill, level: Number(e.target.value) });
+  };
+
+  const handleCancel = () => {
+    setSelectedSkill(null);
+    setCurrentEdit(null);
   };
 
   if (selectedSkill === null) return null;
@@ -52,11 +58,7 @@ function SkillEdit({ onSkillUpdate }: PropsType) {
         />
       </div>
       <div className="flex flex-col justify-center items-center">
-        <ControlButton
-          control="cancel"
-          size={35}
-          onClick={() => setSelectedSkill(null)}
-        />
+        <ControlButton control="cancel" size={35} onClick={handleCancel} />
         <ControlButton control="update" size={35} onClick={onSkillUpdate} />
       </div>
     </li>

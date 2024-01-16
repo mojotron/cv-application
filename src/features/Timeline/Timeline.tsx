@@ -34,8 +34,8 @@ type PropsType = {
 
 function Timeline({ editTarget, items, updateItems }: PropsType) {
   const currentEdit = useCvStore((state) => state.currentEdit);
-
   const setCurrentEdit = useCvStore((state) => state.setCurrentEdit);
+
   // edit state
   const [isNewItem, setIsNewItem] = useState(true);
   const [selectedItem, setSelectedItem] = useState<TimelineItemType>(() =>
@@ -72,6 +72,7 @@ function Timeline({ editTarget, items, updateItems }: PropsType) {
     }
     setIsNewItem(true);
     setSelectedItem(createBlankTimelineItem());
+    setCurrentEdit(null);
   };
 
   return (

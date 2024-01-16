@@ -1,16 +1,16 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { create } from 'zustand';
-import { GeneralInfoType } from './types/generalInfoType';
+import type { GeneralInfoType } from './types/generalInfoType';
 import { GENERAL_INFO } from './constants/generalInfoDefault';
-import { ContactType } from './types/contactType';
+import type { ContactType } from './types/contactType';
 import { CONTACT } from './constants/contactDefaults';
-import { TimelineItemType } from './types/timelineItemType';
+import type { TimelineItemType } from './types/timelineItemType';
 import { EDUCATION } from './constants/educationDefaults';
-
 import type { EditTarget } from './types/editTargetType';
 import { EXPERIENCE } from './constants/experienceDefaults';
-import { SkillType } from './types/skillType';
+import type { SkillType } from './types/skillType';
 import { SKILLS } from './constants/skillDefaults';
+import { localStorageHelpers } from './utils/localStorage';
 
 type State = {
   // edit
@@ -47,36 +47,48 @@ type Actions = {
   setSelectedSkill: (skill: SkillType | null) => void;
 };
 
+const localStore = localStorageHelpers<State>('cv-builder');
+const localState = localStore.read();
+
+const saveAndReturnState = (state: State) => {
+  localStore.write(state);
+  return state;
+};
+
 export const useCvStore = create<State & Actions>()((set) => ({
   // edit
-  currentEdit: null,
+  currentEdit: localState ? localState.currentEdit : null,
   setCurrentEdit: (newValue: EditTarget | null) =>
-    set((state) => ({ ...state, currentEdit: newValue })),
+    set((state) => saveAndReturnState({ ...state, currentEdit: newValue })),
   // General info
-  generalInfo: GENERAL_INFO,
+  generalInfo: localState ? localState.generalInfo : GENERAL_INFO,
   setGeneralInfo: (newGeneralInfo: GeneralInfoType) =>
-    set((state) => ({ ...state, generalInfo: newGeneralInfo })),
+    set((state) =>
+      saveAndReturnState({ ...state, generalInfo: newGeneralInfo }),
+    ),
   // Profile image
-  profileImage: 'https://i.pravatar.cc/150?img=12',
+  profileImage: localState
+    ? localState.profileImage
+    : 'https://i.pravatar.cc/150?img=12',
   setProfileImage: (imageUrl: string) =>
-    set((state) => ({ ...state, profileImage: imageUrl })),
+    set((state) => saveAndReturnState({ ...state, profileImage: imageUrl })),
   // Contact
-  contact: CONTACT,
+  contact: localState ? localState.contact : CONTACT,
   setContact: (newContact: ContactType[]) =>
-    set((state) => ({ ...state, contact: newContact })),
+    set((state) => saveAndReturnState({ ...state, contact: newContact })),
   // Education
-  education: EDUCATION,
+  education: localState ? localState.education : EDUCATION,
   setEducation: (newEducation: TimelineItemType[]) =>
-    set((state) => ({ ...state, education: newEducation })),
+    set((state) => saveAndReturnState({ ...state, education: newEducation })),
   // Experience
-  experience: EXPERIENCE,
+  experience: localState ? localState.experience : EXPERIENCE,
   setExperience: (newEducation: TimelineItemType[]) =>
-    set((state) => ({ ...state, experience: newEducation })),
+    set((state) => saveAndReturnState({ ...state, experience: newEducation })),
   // Skills
-  skills: SKILLS,
-  selectedSkill: null,
+  skills: localState ? localState.skills : SKILLS,
+  selectedSkill: localState ? localState.selectedSkill : null,
   setSkills: (newSkills: SkillType[]) =>
-    set((state) => ({ ...state, skills: newSkills })),
+    set((state) => saveAndReturnState({ ...state, skills: newSkills })),
   setSelectedSkill: (skill: SkillType | null) =>
-    set((state) => ({ ...state, selectedSkill: skill })),
+    set((state) => saveAndReturnState({ ...state, selectedSkill: skill })),
 }));
