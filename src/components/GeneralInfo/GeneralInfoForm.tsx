@@ -33,25 +33,28 @@ function GeneralInfoForm() {
         value={generalInfo.firstName}
         onType={handleChange}
         name={GeneralInfoEnum.firstName}
-        placeholder=""
+        placeholder={GeneralInfoEnum.firstName}
         maxLength={TEXT_LENGTHS.general.firstName}
       />
       <TextInput
         value={generalInfo.lastName}
         onType={handleChange}
         name={GeneralInfoEnum.lastName}
+        placeholder={GeneralInfoEnum.lastName}
         maxLength={TEXT_LENGTHS.general.lastName}
       />
       <TextInput
         value={generalInfo.position}
         onType={handleChange}
         name={GeneralInfoEnum.position}
+        placeholder={GeneralInfoEnum.position}
         maxLength={TEXT_LENGTHS.general.position}
       />
       <TextInput
         value={generalInfo.bio}
         onType={handleChange}
         name={GeneralInfoEnum.bio}
+        placeholder={GeneralInfoEnum.bio}
         type="textarea"
         maxLength={TEXT_LENGTHS.general.bio}
       />

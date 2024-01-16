@@ -16,6 +16,6 @@ export const EDUCATION: TimelineItemType[] = [
     dateStart: '2010-09-30',
     dateEnd: '2014-06-15',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium commodi quos deserunt delectus ex nemo eum, optio possimus quisquam quas. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium commodi quos deserunt delectus ex nemo eum, optio possimus quisquam quas.',
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium commodi quos deserunt delectus ex nemo eum.',
   },
 ];

@@ -6,7 +6,8 @@ function GeneralInfo() {
   const currentEdit = useCvStore((state) => state.currentEdit);
 
   return (
-    <section className="w-full">
+    // print-margin-top is custom class for printing, look index.css
+    <section className="w-full print-margin-top">
       {currentEdit === 'general' ? (
         <GeneralInfoForm />
       ) : (

@@ -14,6 +14,9 @@ import SectionHeading from '../../components/ui/SectionHeading/SectionHeading';
 import type { TimelineItemType } from '../../types/timelineItemType';
 import type { EditTarget } from '../../types/editTargetType';
 import HoverVisibility from '../../components/ui/HoverVisibility/HoverVisibility';
+// constants
+import { TEXT_LENGTHS } from '../../constants/inputTextLengths';
+import { TimelineItemEnum } from '../../types/timelineItemType';
 
 const createBlankTimelineItem = () => {
   return {
@@ -91,36 +94,39 @@ function Timeline({ editTarget, items, updateItems }: PropsType) {
       {currentEdit === editTarget && (
         <TimelineEdit>
           <TextInput
-            name="title"
-            placeholder="title"
+            name={TimelineItemEnum.title}
+            placeholder={TimelineItemEnum.title}
             value={selectedItem.title}
             onType={handleChange}
+            maxLength={TEXT_LENGTHS.timeline.title}
           />
           <TextInput
-            name="institution"
-            placeholder="institution"
+            name={TimelineItemEnum.institution}
+            placeholder={TimelineItemEnum.institution}
             value={selectedItem.institution}
             onType={handleChange}
+            maxLength={TEXT_LENGTHS.timeline.institution}
           />
           <TextInput
-            name="description"
-            placeholder="short description"
+            name={TimelineItemEnum.description}
+            placeholder={TimelineItemEnum.description}
             type="textarea"
             value={selectedItem.description}
             onType={handleChange}
+            maxLength={TEXT_LENGTHS.timeline.description}
           />
           <div className="flex gap-10">
             <DateInput
-              label="start"
+              label={TimelineItemEnum.dateStart}
               value={selectedItem.dateStart}
               onChange={handleChange}
-              name="dateStart"
+              name={TimelineItemEnum.dateStart}
             />
             <DateInput
-              label="end"
+              label={TimelineItemEnum.dateEnd}
               value={selectedItem.dateEnd}
               onChange={handleChange}
-              name="dateEnd"
+              name={TimelineItemEnum.dateEnd}
             />
             <ControlButton control="update" onClick={handleUpdate} size={35} />
           </div>

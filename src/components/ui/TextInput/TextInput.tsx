@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react';
+import { splitCamelCase } from '../../../utils/splitCamelCase';
 
 type PropsType = {
   value: string;
@@ -35,7 +36,7 @@ function TextInput({
           name={name}
           onChange={handleChange}
           max={maxLength}
-          placeholder={placeholder}
+          placeholder={splitCamelCase(placeholder)}
         />
       )}
       {type === 'textarea' && (

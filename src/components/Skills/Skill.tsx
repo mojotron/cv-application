@@ -14,7 +14,8 @@ function Skill({ data, onDelete }: PropsType) {
   const setSelectedSkill = useCvStore((state) => state.setSelectedSkill);
 
   return (
-    <li className="group">
+    // page-brake is custom class for printing, look index.css
+    <li className="page-break group">
       <div className="flex justify-between items-center">
         <h3 className="text-md text-slate-500 font-bold">{data.name}</h3>
         {currentEdit === null && (

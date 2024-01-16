@@ -6,3 +6,11 @@ export type TimelineItemType = {
   dateEnd: string; // format 'YYYY-DD-MM'
   description: string;
 };
+
+export enum TimelineItemEnum {
+  title = 'title',
+  institution = 'institution',
+  description = 'description',
+  dateStart = 'dateStart',
+  dateEnd = 'dateEnd',
+}
