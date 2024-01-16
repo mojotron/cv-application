@@ -1,10 +1,10 @@
 # Resume Builder App
 
-This project is part of [The Odin Project](https://www.theodinproject.com/) curriculum. Goal of this project is to learn basics of React library by creating simple Resume(CV) builder application.
+This project is part of [The Odin Project](https://www.theodinproject.com/) curriculum. Goal of this project is to learn basics of React library by creating simple Resume builder application.
 
-[Live preview](https://mojotron.github.io/cv-application/) of this project, hosted by Netlify.
+[Live preview](https://mojotron.github.io/cv-application/) of this project, hosted by Github Pages.
 
-### What have I learned
+### What have I learned (May 2022)
 
 - What is react and why to use it
 - Starting project with create-react-app toolchain
@@ -17,9 +17,10 @@ This project is part of [The Odin Project](https://www.theodinproject.com/) curr
 - conditional rendering
 - event delegation in react
 
-## Version 2 (Refactor and upgrade)
+## Version 2 Refactor and upgrade (January 2024)
 
 - migrate from CRA to vite
+- use zustand to manage global state
 - refactor class components to functional
 - use react hooks instead lifecycle methods
 - add typescript
